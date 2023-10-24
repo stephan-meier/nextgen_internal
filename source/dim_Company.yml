@@ -1,0 +1,113 @@
+table_name: dim_Company
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_Company_pk
+protect: 0
+columns:
+- column_name: dim_Company_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'Business key of the manufacturer, composed of: [dim_SourceSystem_bk]
+    + "|" + [InternalId]'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,106={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true
+
+    {0739E763-E2EF-408B-B9A9-5C1E2FD91C10},ExtCollation,0='
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Internal source system unique key
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,107={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: Name
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The manufacturer company name
+  extended: ''
+- column_name: Address
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The adress of the manufacturer
+  extended: ''
+- column_name: PostCode
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The postcode of the manufacturer
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,116={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false'
+- column_name: City
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The city of the manufacturer
+  extended: ''
+- column_name: Country
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The country of the manufacturer
+  extended: ''
+- column_name: GlobalLocationNumber
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The global location number of the company
+  extended: ''
+- column_name: HomePage
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The homepage address of the company
+  extended: ''
+- column_name: Active_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Indicates, whether the company is still active
+  extended: ''

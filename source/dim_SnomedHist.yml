@@ -1,0 +1,127 @@
+table_name: dim_SnomedHist
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_SnomedHist_pk
+protect: 0
+columns:
+- column_name: dim_SnomedHist_bk
+  data_type: nvarchar(100)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'The SNOMED CT historical business key, composed of: dim_Snomed_bk]
+    + "|" + [ValidFrom]'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: CatalogueCodeSystem
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: ''
+  extended: ''
+- column_name: CatalogueVersion
+  data_type: nvarchar(20)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: ''
+  extended: ''
+- column_name: InternalId
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system unique key
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: ValidFrom
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The valid from date of this SNOMED CT Code
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,107={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: ValidTo
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The valid to date of this SNOMED CT Code
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,57={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0='
+- column_name: dim_Snomed_bk
+  data_type: nvarchar(100)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Business key of SNOMED CT
+  extended: ''
+- column_name: Snomed
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT fully qualified name in english
+  extended: ''
+- column_name: DefinitionStatusId
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: ''
+  extended: ''
+- column_name: DefinitionStatus
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: ''
+  extended: ''
+- column_name: CaseSignificanceId
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: ''
+  extended: ''
+- column_name: CaseSignificance
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: ''
+  extended: ''
+- column_name: Active_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Active flag of the SNOMED CT Code
+  extended: ''

@@ -1,0 +1,283 @@
+table_name: dim_MedicamentSubstance
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_MedicamentSubstance_pk
+protect: 0
+columns:
+- column_name: dim_MedicamentSubstance_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'Business key for a MedicamentSubstance, composed of: [dim_Medicament_bk]
+    + "|" + [SortOrder]'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Internal source system unique key. In case of Hospindex data, this
+    is composed of: [ProductKey] + "|" + [ComponentLineId] + "|" + [SortOrder]'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: dim_Medicament_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Business key for a Medicament
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,576={E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,58=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Drug
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: dim_MedicamentProduct_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Business key for a MedicamentProduct, composed of [dim_SourceSystem_bk]+"|"+[ProductNumber]
+    (hospINDEX: PRODUCT/PRD/PRDNO)'
+  extended: ''
+- column_name: ProductNumber
+  data_type: nvarchar(30)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The HCI product number
+  extended: ''
+- column_name: ComponentLineNumber
+  data_type: integer
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Component number of this medicament. Standard case = 1 (one medicament).
+    In cases where a medicament consists of multiple other medicaments, the component
+    number is used to group together one medicament.
+  extended: ''
+- column_name: SortOrder
+  data_type: integer
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Sort Order number of the substance within a component
+  extended: ''
+- column_name: dim_Substance_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Business key for a substance
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,632={326D3142-FE18-417A-826C-19DE768FF16A},Bk,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,63=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Substance
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: IsActiveSubstance_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Flag, if this substance is an active substance of the medicament
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,628={E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,109=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Substance
+    > hasinactiveingredient / hasactiveingredient
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: TypeId
+  data_type: nvarchar(15)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: "Substance type ID (hospINDEX: PRODUCT/PRD/CPT/CPTCMP/WHK). Possible\
+    \ values are:\nW = active substance (Wirkstoffe, princip actif)\nw = active substance\
+    \ (Wirkstoffe, princip actif), not relevant for number of active principles, e.g.\
+    \ additional line for base of salt, corresp.\nA = flavouring substance (Aromastoffe,\
+    \ Aromaticum, ar\xF4me)\nC = coloring substance (Farbstoffe, colorant)\nH = helper\
+    \ substance (Hilfsstoffe, excipient)\nh = helper substance (Hilfsstoffe, excipient),\
+    \ not relevant for number of excipients, e.g. additional line for a corresp. entry\n\
+    K = preservative substance (Konservierungsstoffe, Conservans, agent conservateur)\n\
+    X = antioxidant (Antioxydantien, Oxydationshemmer, Antioxydans, antioxydant)\n\
+    excip. = nicht deklarierte F\xFCllstoffe\nExcipientien = nicht deklarierte F\xFC\
+    llstoffe"
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,459={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: Type
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Substance type text (see field TypeId for details)
+  extended: ''
+- column_name: QuantityNumeric
+  data_type: float
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Quantity (hospINDEX: PRODUCT/PRD/CPT/CPTCMP/QTY) provided as type
+    FLOAT in cases where parsing is possible (e.g. "3,16" ? parsed to: 3.16)'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,662={E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,89=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Substance
+    > hasquantity > has value
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {B3A4C212-DE83-406D-B58D-5C2473FBE04D},Sparse,5=false'
+- column_name: QuantityText
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Quantity (hospINDEX: PRODUCT/PRD/CPT/CPTCMP/QTY) provided as type
+    NVARCHAR in cases where parsing is not possible (e.g. "3.36-4.08" ? remains "3.36-4.08")'
+  extended: ''
+- column_name: dim_Unit_Quantity_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Business key of the unit of quantity associated with this medicament
+    substance
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,691={0739E763-E2EF-408B-B9A9-5C1E2FD91C10},ExtCollation,28=SQL_Latin1_General_CP1_CS_AS
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,88=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Substance
+    > hasquantity > has unit
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: SubstancePrefixText
+  data_type: nvarchar(2000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'In many cases the substance is duplicated within this table, a Susbstance
+    Prefix Text describes the reason for it  (hospINDEX: PRODUCT/PRD/CPT/CPTCMP/PREFIX_DE)'
+  extended: ''
+- column_name: SubstanceSuffixText
+  data_type: nvarchar(2000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'In many cases the substance is duplicated within this table, a Susbstance
+    Suffix Text describes the reason for it  (hospINDEX: PRODUCT/PRD/CPT/CPTCMP/SUFFIX_DE)'
+  extended: ''

@@ -1,0 +1,564 @@
+table_name: dim_CaseAdministrative
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_CaseAdministrative_pk
+protect: 0
+columns:
+- column_name: dim_CaseAdministrative_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: The administrative case business key. Standard Format with leading
+    zeros (e.g. 0008670934)
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS
+
+
+    {110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,639={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,72=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#AdministrativeCase
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system unique key
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: dim_Patient_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The patient ID. Standard Format with leading zeros (e.g. 0003439499)
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS
+
+
+    {110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,594={E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,77=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#SubjectPseudoIdentifier
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: TypeId
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal Case Type ID
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS
+
+
+    {110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,703={A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED
+    CT Map,4=true
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,42=394656005, 371883000, 304903009,
+    261665006
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,90=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#AdministrativeCase
+    > hasCareHandling
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: Type
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: "The Case Type text: inpatient (station\xE4r), outpatient (ambulant),\
+    \ daypatient (teil-station\xE4r), unknown"
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS
+
+
+    {110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,167={E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0='
+- column_name: AdmissionDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: In case of inpatient and outpatient the admission datetime, when the
+    patient arrived in the hospital. In case of outpatient, the first appointment
+    datetime in the hospital for this case.
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,612={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,95=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#AdministrativeCase
+    > hasAdmissionDateTime
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: DischargeDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: In case of inpatient and outpatient the discharge datetime, when the
+    patient left the hospital. In case of outpatient, the last appointment datetime
+    in the hospital for this case.
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,613={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,95=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#AdministrativeCase
+    > hasDischargeDateTime
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: dim_Organisation_AdmissionNursing_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The nursing organisation nk, where the patient entered the hospital
+    the first time
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS'
+- column_name: dim_Organisation_AdmissionAdmin_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The adminstrative organisation nk, where the patient entered the hospital
+    the first time
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS'
+- column_name: AdmissionReasonId
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal admission reason ID
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS'
+- column_name: AdmissionReason
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The admission reason text
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS
+
+
+    {110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,56={0739E763-E2EF-408B-B9A9-5C1E2FD91C10},ExtCollation,0='
+- column_name: AdmissionOriginLocationId
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal admission origin location ID
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS
+
+
+    {110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,609={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,92=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#AdministrativeCase
+    > hasOriginLocation
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,4=true
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: AdmissionOriginLocation
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The admission origin text
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS
+
+
+    {110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,57={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0='
+- column_name: AdmissionRefferalId
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal refferal ID
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS'
+- column_name: AdmissionRefferal
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The refferal, who sent the patient to the hospital. E.g. the familiy
+    doctor
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS'
+- column_name: AdmissionKindId
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal admission kind ID. This code is needed for the DRG grouper
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS'
+- column_name: AdmissionKind
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The admission kind text
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS'
+- column_name: dim_Organisation_DischargeNursing_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The nursing organisation nk, where the patient left the hospital the
+    last time
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS'
+- column_name: dim_Organisation_DischargeAdmin_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The adminstrative organisation nk, where the patient left the hospital
+    the last time. This administrative organisation if used for billing.
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS'
+- column_name: DischargeReasonId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal discharge reason ID
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS'
+- column_name: DischargeReason
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The discharge reason text
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS'
+- column_name: DischargeLocationId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal discharge location ID
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS
+
+
+    {110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,612={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,95=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#AdministrativeCase
+    > hasDischargeLocation
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,4=true
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: DischargeLocation
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The discharge location text
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS
+
+
+    {110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,57={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0='
+- column_name: DischargeKindId
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal dischargekind ID. This code is needed for the DRG grouper
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS'
+- column_name: DischargeKind
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The discharge kind text
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS'
+- column_name: dim_CaseAdministrativeCons_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: In case of a consolidated case, the link to the consolidation administrative
+    case
+  extended: ''
+- column_name: IsMainCaseAdministrative_Flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Flag to indicate, if this is the main case in a case consolidation:
+    : 1 = yes, 0 = no, -1 in case there is no case consolidation'
+  extended: ''
+- column_name: IsFirstCaseAdministrative_Flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Flag to indicate, if this is the first case in a case consolidation:
+    1 = yes, 0 = no, -1 in case there is no case consolidation'
+  extended: ''
+- column_name: IsLastCaseAdministrative_Flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Flag to indicate, if this is the last case in a case consolidation:  1
+    = yes, 0 = no, -1 in case there is no case consolidation'
+  extended: ''
+- column_name: Active_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Active flag of the case
+  extended: ''
+- column_name: dim_DrgHist_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The coded DRG for this case
+  extended: ''
+- column_name: dim_SplgHist_bk
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The coded SPLG for this case
+  extended: ''
+- column_name: LenghtOfStayInDays
+  data_type: integer
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'LenghtOfStay in days. Calculated: dim_Date_DischargeDate_nk - dim_Date_AdmissionDate_nk
+    + 1 (the arrival day is also counted as a full day)'
+  extended: ''
+- column_name: CodingStatusId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The coding status internal source system ID
+  extended: ''
+- column_name: CodingStatus
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The coding status text
+  extended: ''
+- column_name: MainInsuranceId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The main insurance class relationship internal source system ID
+  extended: ''
+- column_name: MainInsurance
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The main insurance class relationship text. E.g. KVG, VVG etc.
+  extended: ''
+- column_name: dim_BusinessPartner_MainInsurance_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The Business Partner business key of the main insurance relationship
+  extended: ''
+- column_name: BillingStatusId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The billing status internal source system ID
+  extended: ''
+- column_name: BillingStatus
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The billing status text
+  extended: ''
+- column_name: dim_BusinessPartner_FamilyDoctory_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The family doctors business partner business key
+  extended: ''
+- column_name: CreatedDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The created datetime in the source system
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,57={E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true'

@@ -1,0 +1,414 @@
+table_name: dim_DiagnosisFophHist
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_DiagnosisFophHist_pk
+protect: 0
+columns:
+- column_name: dim_DiagnosisFophHist_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'The diagnosis FOPH business key: CatalogueCodeSystem | CatalogueVersion
+    | CatalogueCode'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: CatalogueCodeSystem
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'fix: ICD-10'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,233={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,7=321,260
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,9=705113004
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: CatalogueVersion
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The modification plus the version resp. the publishing year of the
+    FOPH diagnosis catalogue. E.g. GM-2018
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,233={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,7=321,260
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,9=705113004
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: CatalogueCode
+  data_type: nvarchar(6)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The normalized code of the FOPH diagnosis. Mostly used for diagnosis
+    coding. E.g. B95.0
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,233={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,7=321,258
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,9=118522005
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: CodeName
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The official name of the code
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,183={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,7=321,259
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,9=734841007'
+- column_name: CodeCode
+  data_type: nvarchar(7)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The FOPH diagnosis code as of the ICD-10 soure file. E.g. B95.0!
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,57={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0='
+- column_name: CodeWithoutDot
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The code without any dots. E.g. B950
+  extended: ''
+- column_name: CodeType
+  data_type: nvarchar(14)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: "Type of code, i.e. one of \"pr\xE4kombiniert\" or \"postkombiniert\""
+  extended: ''
+- column_name: CodeClassificationLevel
+  data_type: smallint
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Classification level of code, i.e. one of 3 (3-digit code), 4 (-digit
+    code) or 5 (5-digit code)
+  extended: ''
+- column_name: CodeClassTitle
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Description of this code's class
+  extended: ''
+- column_name: Code3DigitDescription
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Description of this code's 3-digit form, e.g. for the part M63 in the
+    full code M6334
+  extended: ''
+- column_name: Code4DigitDescription
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Description of this code's 4-digit form, e.g. for the part M633 in
+    the full code M6334
+  extended: ''
+- column_name: Code5DigitDescription
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Description of this code's 5-digit form, e.g. for the part M6334 in
+    the full code M6334
+  extended: ''
+- column_name: CodeRelationToGender
+  data_type: nvarchar(21)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Relation of this code to gender
+  extended: ''
+- column_name: CodeRelationToGenderErrorType
+  data_type: nvarchar(11)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Error type of this code regarding relation to gender
+  extended: ''
+- column_name: CodeLowerAgeBound
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Lower age boundary for this code
+  extended: ''
+- column_name: CodeUpperAgeBound
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Upper age boundary for this code
+  extended: ''
+- column_name: CodeAgeBoundErrorType
+  data_type: nvarchar(11)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Error type associated with age boundaries of this code
+  extended: ''
+- column_name: CodeIsRareInCentralEurope
+  data_type: smallint
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Flag indicating whether this diagnosis is rare in central europe
+  extended: ''
+- column_name: CodeContainsContent
+  data_type: smallint
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Flag indicating whether or not this code contains content
+  extended: ''
+- column_name: YearValid
+  data_type: int
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Calendar year during which this code is valid
+  extended: ''
+- column_name: Modification
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'fix: GM'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,183={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,7=321,260
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,9=705113004'
+- column_name: CatalogueIdSourceSystem
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The Code Catalogue ID as of the source system. In most source systemes
+    the ICD10 catalogue gets imported and an internal code catalogue version is being
+    created and used as part of a coded diagnosis.
+  extended: ''
+- column_name: ClassificationLevel
+  data_type: integer
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The classification level. 3=three-digit, 4=four-digit, 5=five-digit
+  extended: ''
+- column_name: IsCodable_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Informative flag, if this code is allowed to be coded: 1 = yes, 0
+    = no'
+  extended: ''
+- column_name: KeyMortalityList1
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Key in mortality list 1 for this code
+  extended: ''
+- column_name: KeyNameMortalityList1
+  data_type: nvarchar(2000)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Name of key in mortality list 1 for this code
+  extended: ''
+- column_name: GroupKeyMortalityList1
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Group key in mortality list 1 for this code
+  extended: ''
+- column_name: GroupKeyNameMortalityList1
+  data_type: nvarchar(2000)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Group key name in mortality list 1 for this code
+  extended: ''
+- column_name: KeyMortalityList2
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Key in mortality list 2 for this code
+  extended: ''
+- column_name: KeyNameMortalityList2
+  data_type: nvarchar(2000)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Name of key in mortality list 2 for this code
+  extended: ''
+- column_name: KeyMortalityList3
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Key in mortality list 3 for this code
+  extended: ''
+- column_name: KeyNameMortalityList3
+  data_type: nvarchar(2000)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Name of key in mortality list 3 for this code
+  extended: ''
+- column_name: GroupKeyMortalityList3
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Group key in mortality list 3 for this code
+  extended: ''
+- column_name: GroupKeyNameMortalityList3
+  data_type: nvarchar(2000)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Group key name in mortality list 3 for this code
+  extended: ''
+- column_name: KeyMortalityList4
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Key in mortality list 4 for this code
+  extended: ''
+- column_name: KeyNameMortalityList4
+  data_type: nvarchar(2000)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Name of key in mortality list 4 for this code
+  extended: ''
+- column_name: KeyMorbidityList
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Key in morbidity list for this code
+  extended: ''
+- column_name: KeyNameMorbidityList
+  data_type: nvarchar(2000)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Name of key in morbidity list for this code
+  extended: ''
+- column_name: IfGSReport
+  data_type: smallint
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Flag indicating that this code is subject to the "Arzt-Meldepflicht"
+    according to the Infektionsschutzgesetz (IfGS)
+  extended: ''
+- column_name: IfGSLab
+  data_type: smallint
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Flag indicating that the "Laborausschlussziffer des EBM" (32006) can
+    be selected for laboratory analyses related to this diagnosis
+  extended: ''

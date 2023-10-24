@@ -1,0 +1,754 @@
+table_name: dim_Patient
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_Patient_pk
+protect: 0
+columns:
+- column_name: dim_Patient_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: The patient ID. Standard Format with leading zeros (e.g. 0003439499)
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,644={E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,77=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#SubjectPseudoIdentifier
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system unique key
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: SocialSecurityNumber
+  data_type: nvarchar(30)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Patient social security number. For Swiss patients in Swiss standard
+    format (e.g. 756.8833.2836.29). For foreign patients, the format of the offical
+    standard in the foreign country.
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,223={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false'
+- column_name: FirstName
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Patient first name
+  extended: ''
+- column_name: LastName
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: patient last name
+  extended: ''
+- column_name: BirthName
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: patient birthname (unmarried name)
+  extended: ''
+- column_name: ResidenceAdress
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: address where the patient is resident
+  extended: ''
+- column_name: ResidencePostCode
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: post code of the municipality where the patient is resident
+  extended: ''
+- column_name: ResidenceCity
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: municipality where the patient is resident
+  extended: ''
+- column_name: ResidenceCanton
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Canton/Region where the patient is resident
+  extended: ''
+- column_name: ResidenceCountry
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Country where the patient is resident
+  extended: ''
+- column_name: dim_Country_ResidenceCountry_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Business key of the country of the residence
+  extended: ''
+- column_name: BirthDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Birthdate of patient (i.e. 1988-12-28 00:00:00). If time is not available
+    the time is set to midnight (00:00:00)
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,688={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,63=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#BirthDate
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {B3A4C212-DE83-406D-B58D-5C2473FBE04D},Sparse,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: BirthCountry
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Country where the patient was born
+  extended: ''
+- column_name: dim_Country_BirthCountry_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Business key to the country where the patient was born
+  extended: ''
+- column_name: CitizenshipCountry
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Citizenship of the patient
+  extended: ''
+- column_name: dim_Country_CitizenshipCountry_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Business key to the country of the citizenship of the patient
+  extended: ''
+- column_name: PhoneNumber
+  data_type: nvarchar(30)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Phonenumber of patient
+  extended: ''
+- column_name: MobileNumber
+  data_type: nvarchar(30)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Mobilenumber of patient
+  extended: ''
+- column_name: Email
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Email Adress of patient
+  extended: ''
+- column_name: VitalStatusZas
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The status of the patient according the ZAS database
+  extended: ''
+- column_name: VitalStatusZasVerificationDate
+  data_type: date
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Date of the latest verification of this patient against the ZAS Database,
+    if not available = NULL
+  extended: ''
+- column_name: DeathStatus
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: If the patient is dead, this value is set to "dead", else "unknown"
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,656={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,65=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#DeathStatus
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,20=261665006, 419099009
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,4=true
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: DeathReason
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The death reason, if available
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,455={D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED
+    CT,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: DeathLocation
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The death location, if available
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,455={D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED
+    CT,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: DeathDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Date and time of patients death (i.e. 2014-01-31 18:15:00)
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,688={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,63=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#DeathDate
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {B3A4C212-DE83-406D-B58D-5C2473FBE04D},Sparse,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: GenderAdministrativeId
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Short identifier of administrative gender as of the source system
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,683={A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED
+    CT Map,4=true
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,74=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#AdministrativeGender
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,38=703117000,703118005,74964007,261665006
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: GenderAdministrative
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Administrative Gender of the patient: e.g.: male, female, other, unknown'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,167={D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED
+    CT,0=
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true'
+- column_name: GenderAdministrativeValidSinceDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: The date the administrative genders got valid. Standard case, same
+    as BirthDate. In case of gender change operation, the administrativ change of
+    the gender.
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,720={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,94=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#AdministrativeGender
+    > hasRecordDateTime
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {B3A4C212-DE83-406D-B58D-5C2473FBE04D},Sparse,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: dim_Consent_General_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The general consent business key
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,742={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,91=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Consent
+    > hasTypeCode & hasStatusCode
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,81=hasTypeCode: 60132005 / hasStatusCode:
+    225795001, 261665006, 385645004, 443390004
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,4=true
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: dim_Consent_BiobankInformed_bk
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: If a biobank exists, this is the consent in order store the remaining
+    material (DNA / BuffyCoat, EDTA-Plasma, Serum, Citrat-Plasma, Urine, CSF) that
+    is not directly taken for a specific study.
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,743={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,91=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Consent
+    > hasTypeCode & hasStatusCode
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,81=hasTypeCode: 69658003 / hasStatusCode:
+    225795001, 261665006, 385645004, 443390004
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,4=true
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: CivilStatusId
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Short identifier of the civil status as of the source system
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,708={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,65=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#CivilStatus
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,4=true
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,72=1125681006, 14012001, 160504008,
+    20295000, 266945001, 33553000, 87915002
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: CivilStatus
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The civil status text. Indicates the familial and social situation
+    of the patient
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,110={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0='
+- column_name: CivilStatusChangeDate
+  data_type: date
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Civil status change date
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,657={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,84=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#CivilStatus
+    > hasEventDateTime
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {B3A4C212-DE83-406D-B58D-5C2473FBE04D},Sparse,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: Employee_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: If the patient is currently an employee of the hospital, this flag
+    = 1, otherwise = 0
+  extended: ''
+- column_name: Active_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Active flag of the patient. mostly not active in case of a merged patient
+  extended: ''
+- column_name: Merge_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Flag for replaced patient numbers:
+
+    ''1'': Patient number merged to new one
+
+    ''0'': current patient number
+
+    New/current patient number in column dim_Patient_Merge_nk'
+  extended: ''
+- column_name: dim_Patient_Merge_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Link to current patient nk of this patient or to itself, if no merge
+    happend. If there are multiple merges, all merged patients link to the latest
+    active patient (e.g. patient 1 merged to patient 2 and later it merged to patient
+    3, then all 3 patients do have 3 as its dim_Patient_Merge_nk)
+  extended: ''
+- column_name: ReligionId
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: short identifier of the patients religion as of the source system
+  extended: ''
+- column_name: Religion
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: patient religion in german
+  extended: ''
+- column_name: LanguageId
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: short identifier of the patients language as of the source system
+  extended: ''
+- column_name: Language
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: patient language in german
+  extended: ''
+- column_name: RaceId
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: short identifier of the patients race as of the source system
+  extended: ''
+- column_name: Race
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: patient race in german
+  extended: ''
+- column_name: dim_Patient_Mother_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The patients mother patient bk
+  extended: ''
+- column_name: GestationalAgeInDays
+  data_type: integer
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: gestational age of a child at birth in days (e.g. birth in week 38
+    day 2 --> 38 * 7 + 2 = 198, if unknow, value = NULL
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,722={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,96=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#GestationalAgeAtBirth
+    > hasQuantity & Unit
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {B3A4C212-DE83-406D-B58D-5C2473FBE04D},Sparse,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: MultipleBirthOrder
+  data_type: integer
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: in case the patient was born in a multiple birth, the order of birth.
+    E.g. first child born = 1, second child born = 2. If no multiple birth, value
+    = 0, if unknown, value = NULL
+  extended: ''
+- column_name: dim_AdministrativeCase_BirthInfoDerivedFrom_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The administrative case, the information has been derived from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,617={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,99=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#GestationalAgeAtBirth
+    > hasAdministrativeCase
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: CreatedDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The created datetime in the source system
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,57={E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true'

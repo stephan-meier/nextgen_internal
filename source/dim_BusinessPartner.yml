@@ -1,0 +1,208 @@
+table_name: dim_BusinessPartner
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_BusinessPartner_pk
+protect: 0
+columns:
+- column_name: dim_BusinessPartner_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: The business key of the business partner
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system unique key
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: BerNumber
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The offical BER (Business and Enterprise Register) number / BUR Nummer
+    (Betriebs- und Unternehmersregister)
+  extended: ''
+- column_name: GlnNumber
+  data_type: nvarchar(15)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The offical GLN (Global Location Number) of this business partner
+  extended: ''
+- column_name: ZsrNumber
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The offical ZSR (Zahlungsregisternummer) of this business partner
+  extended: ''
+- column_name: TypeId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The main type internal source system ID
+  extended: ''
+- column_name: Type
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The main type resp. role of this business partner. E.g. doctor, insurance
+    etc.
+  extended: ''
+- column_name: SubTypeId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The sub type internal source systeme ID
+  extended: ''
+- column_name: SubType
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The sub type resp. sub role of this business partner, if exists. E.g.
+    internist, psychologist etc.
+  extended: ''
+- column_name: Title
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The title of the business partner
+  extended: ''
+- column_name: Name1
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The Name 1 of the business partner
+  extended: ''
+- column_name: Name2
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The Name 2 of the business partner
+  extended: ''
+- column_name: Name3
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The Name 3 of the business partner
+  extended: ''
+- column_name: Address
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The address of the busines partner
+  extended: ''
+- column_name: PostCode
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The post code of the business partner
+  extended: ''
+- column_name: City
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The city of the business partner
+  extended: ''
+- column_name: Canton
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The canton of the business partner
+  extended: ''
+- column_name: Country
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The country of the business partner
+  extended: ''
+- column_name: Phone
+  data_type: nvarchar(20)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The phone number of the business partner
+  extended: ''
+- column_name: Email
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The email of the business partner
+  extended: ''
+- column_name: dim_Country_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The country business key of the business partner
+  extended: ''
+- column_name: Active_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Active flag of the business partner
+  extended: ''

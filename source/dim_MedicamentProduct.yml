@@ -1,0 +1,261 @@
+table_name: dim_MedicamentProduct
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_MedicamentProduct_pk
+protect: 0
+columns:
+- column_name: dim_MedicamentProduct_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'Business key for a MedicamentProduct, composed of [dim_SourceSystem_bk]+"|"+[ProductNumber]
+    (hospINDEX: PRODUCT/PRD/PRDNO)'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,510={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Internal source system unique key. In case of HCI data, this corresponds
+    to the Productkey | ComponentLineNumber. In case there is no Component Line number,
+    we set the component line number to 1
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: ProductNumber
+  data_type: nvarchar(30)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The HCI product number (hospINDEX: PRODUCT/PRD/PRDNO)'
+  extended: ''
+- column_name: dim_Atc_bk
+  data_type: nvarchar(7)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'ATC-Code (e.g. "A02AA01"). The SPHN data set defines ATC on level
+    substance, but ATC is on level medicament, therefore its here. (hospINDEX: PRODUCT/PRD/ATC)'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,644={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,74=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Substance
+    > has code
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: MedicamentNameGerman
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: "Medicament name in German (hospINDEX: PRODUCT/PRD/DSCRD)\n\nExample:\
+    \ \"NACL Baxter Inf L\xF6s 0.45 % 1000ml Erw Btl\"\n\nAccording to the Hospindex\
+    \ documentation the medicament name is made of these attributes (in this order):\n\
+    - BrandNameGerman (BNAMD)                          NACL\n- AdditionalNameGerman\
+    \ (ADNAMD)                 Baxter\n- GalenicFormNameGerman (FORMD)           \
+    \    Inf L\xF6s\n- Concentration (DOSE)                                     0.45\n\
+    - ConcentrationUnit (DOSEU)                            %\n- Size (SIZE)      \
+    \                                                1000ml\n- DrugForGerman (DRGFD)\
+    \                               Erw\n- ComplementaryInformation (ADINFD)     \
+    \         Btl"
+  extended: ''
+- column_name: BrandNameGerman
+  data_type: nvarchar(30)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Brand name of drug or parapharmaceutical product in German (e.g. "Aspirin")
+    (hospINDEX: PRODUCT/PRD/BNAMD)'
+  extended: ''
+- column_name: AdditionalNameGerman
+  data_type: nvarchar(35)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'German part of medication name which is not directly brand name (hospINDEX:
+    PRODUCT/PRD/ADNAMD)
+
+
+    Example: "suncream"'
+  extended: ''
+- column_name: Concentration
+  data_type: float
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Dosage / concentration information for this medicament (hospINDEX:
+    PRODUCT/PRD/DOSE). Not filled for medicaments with multiple substances.'
+  extended: ''
+- column_name: ConcentrationUnit
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Unit of dosage / concentration (hospINDEX: PRODUCT/PRD/DOSEU), concatenated
+    with the dim_SourceSystem_bk.
+
+
+    Example: ''HCI|mg'''
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,85={0739E763-E2EF-408B-B9A9-5C1E2FD91C10},ExtCollation,28=SQL_Latin1_General_CP1_CS_AS'
+- column_name: Size
+  data_type: nvarchar(35)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Size of medicament (hospINDEX: PRODUCT/PRD/SIZE)
+
+
+    Exampe: "10x10cm"'
+  extended: ''
+- column_name: DrugForGerman
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Drug for German, e.g. baby, adult,... (hospINDEX: PRODUCT/PRD/DRGFD)'
+  extended: ''
+- column_name: ComplementaryInformation
+  data_type: nvarchar(35)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Complementary information in German (hospINDEX: PRODUCT/PRD/ADINFD)'
+  extended: ''
+- column_name: SwissmedicAuthorizationNumber
+  data_type: integer
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Swissmedic Authorization Number (hospINDEX: PRODUCT/PRD/SMNR)'
+  extended: ''
+- column_name: SwissmedicNameGerman
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Swissmedic product description in German (hospINDEX: PRODUCT/PRD/DSCRSWISSMEDICD)'
+  extended: ''
+- column_name: BfsExpensiveMedicament
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Text which indicates if a medicament is on the highly expensive DRG
+    medicament list. (hospINDEX: PRODUCT/PRD/BFS) / Format: ATC;additional info;route
+    of administration;cumulative dose;unit'
+  extended: ''
+- column_name: GenericGroupCode
+  data_type: nvarchar(100)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: "The generic group code (hospINDEX: PRODUCT/PRD/GENGRP or PRODUCT/PRD/CPT/GENGRPCPT)\
+    \ is a hierarchic code system that allows grouping of pharmaceutically similar\
+    \ products and therefore pharmaceutical substitution. It has the following structure:\n\
+    \nATC-Code (WHO) 7 digits\nApplication index 2 digits\nGalenic group 1 digit\n\
+    Retard 1 digit\n#of subgroup, 1 digit (0-9, A-Z). Used to differentiate between\
+    \ similar products with different indications or with subtle differences of the\
+    \ substances uses (e.g. base / different salts)\nConcentration identification\
+    \ 8 digits (amount of the main substance in relation to the \"Bezugsgr\xF6sse\"\
+    , unit of usage. Not necessarily the concentration itself!)\nDetailed galenic\
+    \ form 4 digits\nThe GENGRP is only available for products that meet all of the\
+    \ following three criteria:\n\nhave an ATC level 5\nconsist of 1-4 substances\
+    \ (as denoted by uppercase \"W\" in the CPT/CPTCMP composition data)\nthe substances\
+    \ of the product have a molecular weight OR a defined base/salt ratio (otherwise\
+    \ no calculations are possible)\nTherefore, special medical product groups that\
+    \ do not have a GENGRP are e.g.\n\nsera, vaccines\nblood products\nradiocontrast\
+    \ agents\nallergens\nmultivitamins\ninfusions (parenteral nutrition)\nherbal products\n\
+    homeopathics, anthroposophics, spagyrics\nProducts that do not fit these criteria\
+    \ can be grouped using other INDEX data such as the plain ATC (PRODUCT/PRD/ATC)\
+    \ or the assortment code (ARTICLE/ART/CDSO1). In addition, data from a product's\
+    \ \"normed\" composition substances might help to group special products (see\
+    \ PRODUCT_SUBSTANCE_ALTERNATIVE_QUANTITY).\n\nThe GENGRP has the OID 2.16.756.5.30.2.6.2"
+  extended: ''
+- column_name: ProductForm
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The form from hospindex (hospINDEX: PRODUCT/PRD/FORMD).'
+  extended: ''
+- column_name: Active_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Active flag for this medicament
+  extended: ''

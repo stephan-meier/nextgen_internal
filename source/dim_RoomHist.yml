@@ -1,0 +1,159 @@
+table_name: dim_RoomHist
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_RoomHist_pk
+protect: 0
+columns:
+- column_name: dim_RoomHist_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'The room historical business key, composed of: [dim_SourceSystem_bk]
+    + "|" + [InternalId] + "|" + [ValidFrom]'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system unique key, this corresponds to the business
+    key of non-Hist table
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,101={326D3142-FE18-417A-826C-19DE768FF16A},Bk,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: ValidFrom
+  data_type: date
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The valid from date of this record
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,107={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: ValidTo
+  data_type: date
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The valid to date of this record
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,57={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0='
+- column_name: dim_Room_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Business key of the room
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,102={326D3142-FE18-417A-826C-19DE768FF16A},Bk,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false'
+- column_name: Room
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The room name
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,51={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false'
+- column_name: RoomTypeId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system room type ID
+  extended: ''
+- column_name: RoomType
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The room type text. E.g. bedroom, operation room, other room etc.
+  extended: ''
+- column_name: dim_Station_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The station business key
+  extended: ''
+- column_name: Station
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The station name
+  extended: ''
+- column_name: FloorId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The floor Id from the source system
+  extended: ''
+- column_name: Floor
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The floor name
+  extended: ''
+- column_name: BuildingId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The building Id from the source system
+  extended: ''
+- column_name: Building
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The building name
+  extended: ''
+- column_name: Active_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Active flag of the room
+  extended: ''

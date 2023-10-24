@@ -1,0 +1,147 @@
+table_name: dim_ChemoTherapyCycle
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_ChemoTherapyCycle_pk
+protect: 0
+columns:
+- column_name: dim_ChemoTherapyCycle_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'Business key of the chemotherapy cylce, composed of: [dim_SourceSystem_bk]
+    + "|" + [InternalId]'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Internal source system unique key for a chemotherapy cycle
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,107={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: dim_Patient_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Business key of patient ID in standard format. padded with leading
+    zeros (e.g. '0003439499')
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,595={E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,77=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#SubjectPseudoIdentifier
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: dim_ChemoTherapy_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Business key of the chemotherapy in table [dim_ChemoTherapy]
+  extended: ''
+- column_name: SortNumber
+  data_type: int
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Sort number of a certain chemo therapy cylce
+  extended: ''
+- column_name: SupportiveCycle_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Flag indicating a supportive medication cycle (Y= pre- or supportive
+    medication cycle / N = main medication cylce)
+  extended: ''
+- column_name: dim_ChemoTherapyCycle_Main_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: In case of a supportive chemo therapy cycle the, main chemo therapy
+    cycle business key
+  extended: ''
+- column_name: StartDate
+  data_type: date
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Start datetime of this therapy cycle
+  extended: ''
+- column_name: EndDate
+  data_type: date
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: End datetime of this therapy cycle
+  extended: ''
+- column_name: DurationInDays
+  data_type: int
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Duration of this therapy cycle in days
+  extended: ''
+- column_name: DaysBetweenTherapyStartAndCycleStart
+  data_type: int
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Number of days between the start of the chemotherapy and the start
+    of this chemotherapy cycle
+  extended: ''
+- column_name: dim_ChemoTherapyProtocol_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Business key for chemotherapy protocol ID on which this cycle is based
+  extended: ''

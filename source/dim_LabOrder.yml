@@ -1,0 +1,255 @@
+table_name: dim_LabOrder
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_LabOrder_pk
+protect: 0
+columns:
+- column_name: dim_LabOrder_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'The business key of the lab order:'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system unique key
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: dim_Patient_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The patient ID. Standard Format with leading zeros (e.g. 0003439499)
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,594={E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,77=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#SubjectPseudoIdentifier
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: dim_CaseAdministrative_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The administrative case business key. Standard Format with leading
+    zeros (e.g. 0008670934)
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,589={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,72=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#AdministrativeCase
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: OrderDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The date when the order has been placed
+  extended: ''
+- column_name: OrderFirstReceivedLabDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The date when the order was initially received in the lab
+  extended: ''
+- column_name: OrderLastReceivedLabDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The date when the order was received in the lab the last time. This
+    can happen, if the placer changes the order and resends it to the lab with e.g.
+    updated information
+  extended: ''
+- column_name: OrderFirstResendDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The date the order was sent back to the placer the first time
+  extended: ''
+- column_name: OrderLastResendDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The date the order was sent back to the placer the last time
+  extended: ''
+- column_name: BillingDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The date when the order was billed in the billing system
+  extended: ''
+- column_name: StatusId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system internal status ID
+  extended: ''
+- column_name: Status
+  data_type: nvarchar(100)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The status or the order
+  extended: ''
+- column_name: dim_Organisation_Admin_Placer_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The placer administrative organisational unit
+  extended: ''
+- column_name: dim_Organisation_Nursing_Placer_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The placer nursing organisational unit
+  extended: ''
+- column_name: dim_Organisation_Filler_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The filler / executor organisational unit
+  extended: ''
+- column_name: dim_Organisation_Admin_Receiver_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The administrative receiver organisational unit. Normally the same
+    as the orderer. In minor cases it can be different e.g. when the lab was placed
+    in emerceny and the patient went to the bed station in between and the result
+    is sent to the bed station.
+  extended: ''
+- column_name: dim_Organisation_Nursing_Receiver_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The nursing receiver organisational unit. Normally the same as the
+    orderer. In minor cases it can be different e.g. when the lab was placed in emerceny
+    and the patient went to the bed station in between and the result is sent to the
+    bed station.
+  extended: ''
+- column_name: OrderType
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The lab order type (e.g. routine, pathological, microbiology)
+  extended: ''
+- column_name: PriorityId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system priority id
+  extended: ''
+- column_name: Priority
+  data_type: nvarchar(100)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The priority text
+  extended: ''
+- column_name: dim_Study_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The study bk for which study this measure was made
+  extended: ''
+- column_name: dim_MapStudyParticipant_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The study particpant pseudo id from dim_StudyParticipantMap
+  extended: ''

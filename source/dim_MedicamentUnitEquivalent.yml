@@ -1,0 +1,164 @@
+table_name: dim_MedicamentUnitEquivalent
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_MedicamentUnitEquivalent_pk
+protect: 0
+columns:
+- column_name: dim_MedicamentUnitEquivalent_bk
+  data_type: nvarchar(177)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'The business key for a medicament unit equivalent: dim_SourceSystem_bk
+    | InternalId'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,135={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true
+
+    {0739E763-E2EF-408B-B9A9-5C1E2FD91C10},ExtCollation,28=SQL_Latin1_General_CP1_CS_AS'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(164)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The internal source system unique key: dim_Medicament_bk | dim_Unit_In_bk
+    | dim_Unit_Out_bk'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: dim_Medicament_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The business key of the medicament
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,576={E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,58=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Drug
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: dim_MedicamentProduct_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Business key for a MedicamentProduct, composed of [dim_SourceSystem_bk]+"|"+[ProductNumber]
+    (hospINDEX: PRODUCT/PRD/PRDNO)'
+  extended: ''
+- column_name: ProductNumber
+  data_type: nvarchar(30)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The HCI product number (hospINDEX: PRODUCT/PRD/PRDNO)'
+  extended: ''
+- column_name: ComponentLineNumber
+  data_type: integer
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Component line number (hospINDEX: PRODUCT/PRD/CPT/CPTLNO)'
+  extended: ''
+- column_name: UnitMediEquiIn
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The Input Unit ID
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,193={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {0739E763-E2EF-408B-B9A9-5C1E2FD91C10},ExtCollation,28=SQL_Latin1_General_CP1_CS_AS'
+- column_name: UnitMediEquiOut
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The Output Unit ID
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,142={0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM
+    Map,5=false
+
+    {0739E763-E2EF-408B-B9A9-5C1E2FD91C10},ExtCollation,28=SQL_Latin1_General_CP1_CS_AS'
+- column_name: IsStandardUnit_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Marks the Output Unit ID with a flag, in case the Output Unit ID is
+    the standard unit
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,57={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0='
+- column_name: RecalculationFactor
+  data_type: float
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The recalculation factor from the Input Unit to the Output Unit
+  extended: ''
+- column_name: NumberOfActiveIngredients
+  data_type: integer
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The number of active ingredients of this medicament
+  extended: ''
+- column_name: NumberOfStandardUnitsAlternativeSubstance
+  data_type: integer
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The number of Standard Units from the Alternative Components table
+    --> in case the Number is > 1, we cannot make a recalculation
+  extended: ''
+- column_name: NumberOfStandardUnitsActiveIngredients
+  data_type: integer
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The number of different Units for all active Ingredients from Medicament
+    Composition table --> in case the Number is > 1, we cannot make a recalculation
+  extended: ''

@@ -1,0 +1,85 @@
+table_name: dim_ChemoTherapyProtocol
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_ChemoTherapyProtocol_pk
+protect: 0
+columns:
+- column_name: dim_ChemoTherapyProtocol_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'Business key of the chemotherapy protocol, composed of: [dim_SourceSystem_bk]
+    + "|" + [InternalId]'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Internal source system unique key for a chemotherapy protocol
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,107={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: Protocol
+  data_type: nvarchar(2000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Therapy protocol name of this oncological therapy
+  extended: ''
+- column_name: Status
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Therapy protocol status, with the following options:
+
+    - Active
+
+    - Inactive
+
+    - Active / Not funded'
+  extended: ''
+- column_name: VersionStatus
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Therapy protocol version status, with the following options:
+
+    - Approved
+
+    - Not approved
+
+    - Inactive'
+  extended: ''
+- column_name: Version
+  data_type: int
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Therapy protocol version
+  extended: ''

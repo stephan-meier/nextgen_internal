@@ -1,0 +1,166 @@
+table_name: dim_Organisation
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_Organisation_pk
+protect: 0
+columns:
+- column_name: dim_Organisation_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'The organisation business key: dim_SourceSystem_bk | internal source
+    system unique key'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system unique key
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,638={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,69=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#TherapeuticArea
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0=
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,4=true
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: ValidFrom
+  data_type: date
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The valid from date of this employee record
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,108={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false'
+- column_name: ValidTo
+  data_type: date
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The valid to date of this employee record
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,57={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0='
+- column_name: Organisation
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The name of the organisation
+  extended: ''
+- column_name: TypeId
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal organsation type ID from the source system
+  extended: ''
+- column_name: Type
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The organisation type: Nursing, Administrative (bed, ambulantorium,
+    admin, any other / Bettenstation, Ambulatorium, Medizinisch Technische Funktionsstelle,
+    allen anderen)'
+  extended: ''
+- column_name: dim_OrganisationParent_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: The parent organisation business key. In the case of the root node
+    the value is null
+  extended: ''
+- column_name: dim_CostCenter_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The cost center business key belonging to this organisational unit
+  extended: ''
+- column_name: DisciplineId
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The medical discipline internal Id
+  extended: ''
+- column_name: Discipline
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The medical discipline text
+  extended: ''
+- column_name: Clinic
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The clinic text. Values here are "Chirurgie", "Medizin"
+  extended: ''
+- column_name: dim_Hospital_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The hospital business key
+  extended: ''
+- column_name: Active_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Active flag of the organisation
+  extended: ''

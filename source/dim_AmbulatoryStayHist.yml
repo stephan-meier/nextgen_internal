@@ -1,0 +1,361 @@
+table_name: dim_AmbulatoryStayHist
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_AmbulatoryStayHist_pk
+protect: 0
+columns:
+- column_name: dim_AmbulatoryStayHist_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'Business key of the ambulatory stay hist, composed of: [dim_SourceSystem_bk]
+    + "|" + [InternalId]'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,658={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,90=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#HealthcareEncounter
+    > has identifier
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system unique key
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: dim_StationaryStayHist_bk
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The stationary stay business key, in case of a stationary stay otherwise
+    dummy value -> with this FK you'll get the Nursing and Admin Organisational Unit
+    in case of a stationary stay
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,57={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0='
+- column_name: dim_Patient_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The patient ID. Standard Format with leading zeros (e.g. 0003439499)
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,594={E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,77=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#SubjectPseudoIdentifier
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: dim_CaseAdministrative_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The administrative case business key. Standard Format with leading
+    zeros (e.g. 0008670934)
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS
+
+
+    {110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,589={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,72=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#AdministrativeCase
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: StartDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The start datetime of the ambulatory stay
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,610={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,92=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#HealthcareEncounter
+    > HasStartDateTime
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: EndDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: The end datetime of the ambulatory stay, if available
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,663={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,90=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#HealthcareEncounter
+    > HasEndDateTime
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {B3A4C212-DE83-406D-B58D-5C2473FBE04D},Sparse,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: EntryRefferalId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The refferal Id
+  extended: ''
+- column_name: EntryRefferal
+  data_type: nvarchar(100)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The refferal: e.g. doctor, self, ambulance, jurisdiction etc.'
+  extended: ''
+- column_name: EntryReasonId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The entry reason id
+  extended: ''
+- column_name: EntryReason
+  data_type: nvarchar(100)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The entry reason: emercency, planned, birth, transfer < 24h etc.'
+  extended: ''
+- column_name: dim_BedSpace_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The bed space (Bettenstellplatz) the patient was located for this ambulatory
+    stay --> this case could be very seldom from ambualtory stay. In emergency cases,
+    this is the bednumber in the "Koje" where patient is being treated
+  extended: ''
+- column_name: dim_Room_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The room the patient was located for this ambulatory stay --> this
+    case could be very seldom from ambualtory stay. In emergency cases, this is the
+    "Koje" where patient is being treated
+  extended: ''
+- column_name: dim_Station_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The station business key
+  extended: ''
+- column_name: dim_Organisation_Nursing_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The nursing organisational unit of this ambulatory stay
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,57={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0='
+- column_name: dim_Organisation_Admin_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The administrative organisational unit of this ambulatory stay
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,589={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,72=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#hasTherapeuticArea
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,4=true
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: LocationId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'SPHN: the current location during this stay'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,611={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,94=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#HealthcareEncounter
+    > HasCurrentLocation
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,4=true
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: LocationOriginId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'SPHN: the origin location the patient came from'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,610={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,93=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#HealthcareEncounter
+    > HasOriginLocation
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,4=true
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: LocationTargetId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'SPHN: the target location the patient goes after this stay'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,610={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,93=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#HealthcareEncounter
+    > HasTargetLocation
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,4=true
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: Active_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Active flag of the stay
+  extended: ''

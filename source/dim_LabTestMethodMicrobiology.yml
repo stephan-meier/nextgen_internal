@@ -1,0 +1,75 @@
+table_name: dim_LabTestMethodMicrobiology
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_LabTestMethodMicrobiology_pk
+protect: 0
+columns:
+- column_name: dim_LabTestMethodMicrobiology_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: The lab test business key of the internal source system
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,108={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system unique key
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,107={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,4=true'
+- column_name: LabTestMethodMicrobiology
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The lab test microbiology text
+  extended: ''
+- column_name: LabTestMethodCategoryLevel00
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The lab test microbiology Category Level 00 (highest level). E.g. Virus,
+    Bacterias, Serelogy etc.
+  extended: ''
+- column_name: LabTestMethodCategoryLevel01
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The lab test microbiology Category Level 01. E.g. CPR, Culture etc.
+  extended: ''
+- column_name: Active_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Active flag of the lab test code
+  extended: ''

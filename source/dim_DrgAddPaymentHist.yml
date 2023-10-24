@@ -1,0 +1,200 @@
+table_name: dim_DrgAddPaymentHist
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_DrgAddPaymentHist_pk
+protect: 0
+columns:
+- column_name: dim_DrgAddPaymentHist_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'The DRG Add Payment (Zusatzentgelt) business key: CodeSystem | Version
+    | Code'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: CatalogueCodeSystem
+  data_type: nvarchar(20)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'fix: DRG Zusatzentgelt'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,218={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0=
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: CatalogueVersion
+  data_type: nvarchar(20)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The versionID, the Calculation Basis Year, the publishing year and
+    the version type. E.g. v10.0
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,218={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0=
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: CatalogueCode
+  data_type: nvarchar(20)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The DRG Add Payment code E.g. 64.12
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,218={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0=
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: CodeNameGerman
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The official name of the code in German
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,168={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0='
+- column_name: CodeNameFrench
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The official name of the code in French
+  extended: ''
+- column_name: CodeNameItalian
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The official name of the code in Italian
+  extended: ''
+- column_name: VersionYear
+  data_type: integer
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The version year oft the DRG Add Payment Calalogue
+  extended: ''
+- column_name: TypeId
+  data_type: nvarchar(1)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The version type Id of the DRG catalogue: A = ATC / C = CHOP / T =
+    Text (not automatically billable. Please consult the special information within
+    the excel version)'
+  extended: ''
+- column_name: Type
+  data_type: nvarchar(20)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The version type text of the DRG catalogue: A = ATC / C = CHOP / T
+    = Text (not automatically billable. Please consult the special information within
+    the excel version)'
+  extended: ''
+- column_name: DoseMin
+  data_type: decimal(10,3)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: In case of Type ATC, the minimum dose for this DRG Add Payment code
+  extended: ''
+- column_name: DoseMax
+  data_type: decimal(10,3)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: In case of Type ATC, the maximum dose for this DRG Add Payment code
+  extended: ''
+- column_name: DoseUnit
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: In case of Type ATC, the dose unit of the above two fields
+  extended: ''
+- column_name: AllowedRouteOfAdministration
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: In case of Type ATC and value is not null, the allowed route of administration
+    for this dosage. If ATC and NULL, all route of administration are allowed
+  extended: ''
+- column_name: dim_Atc_bk
+  data_type: nvarchar(7)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: In case of Type ATC , the atc business key
+  extended: ''
+- column_name: dim_ServiceHist_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'TODO at customer site: The historic servcies catalogue code from the
+    source system, that maps to the CDMH model business key of the table dim_ServiceHist'
+  extended: ''
+- column_name: dim_ServiceBk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'TODO at customer site: The servcies catalogue code from the source
+    system, that maps to the CDMH model business key of the table dim_Service'
+  extended: ''
+- column_name: ExcludedDrgs
+  data_type: nvarchar(100)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The excluded DRGs from this add payment
+  extended: ''

@@ -1,0 +1,156 @@
+table_name: dim_MapLoinc
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_MapLoinc_pk
+protect: 0
+columns:
+- column_name: dim_MapLoinc_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: The lab test business key of the internal source system
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,638={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,72=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#LabTest
+    > has code
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,4=true
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system unique key
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,108={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false'
+- column_name: LabTestRoutine
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The lab test routine text
+  extended: ''
+- column_name: dim_MedicalDevice_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Business key of the medical device
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,719={326D3142-FE18-417A-826C-19DE768FF16A},Bk,5=false
+
+    {0739E763-E2EF-408B-B9A9-5C1E2FD91C10},ExtCollation,28=SQL_Latin1_General_CP1_CS_AS
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,65=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#LabAnalyzer
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: TestKit
+  data_type: nvarchar(100)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The test kit used to do the measure with a certain medical device
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,594={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,76=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#LabTest
+    > has test kit
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: Active_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Active flag of the lab test code
+  extended: ''
+- column_name: dim_Loinc_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The labor test LOINC business key without the version: CatalogueCode'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,651={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,72=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#LabTest
+    > has code
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,9=118522005
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'

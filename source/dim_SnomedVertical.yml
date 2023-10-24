@@ -1,0 +1,129 @@
+table_name: dim_SnomedVertical
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_SnomedVertical_pk
+protect: 0
+columns:
+- column_name: dim_SnomedVertical_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'The dim_SnomedVertical business key: InternalId (dim_SnomedAncestor_bk
+    | dim_SnomedDescendent_bk)'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The internal source system unique key: dim_SnomedAncestor_bk | dim_SnomedDescendent_bk'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,101={326D3142-FE18-417A-826C-19DE768FF16A},Bk,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: dim_SnomedAncestor_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT ancestor business key
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,453={326D3142-FE18-417A-826C-19DE768FF16A},Bk,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: dim_SnomedDescendent_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT descendent business key
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,453={326D3142-FE18-417A-826C-19DE768FF16A},Bk,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: Depth
+  data_type: smallint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The relative depth from the ancestor node to any other descendent node
+  extended: ''
+- column_name: Root_Flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Indicates, if this node is a root node. 1=yes / 0=no
+  extended: ''
+- column_name: Leaf_Flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Indicates, if this node is a leaf node. 1=yes / 0=no
+  extended: ''
+- column_name: Ancestor
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The name of the ancestor SNOMED CT code
+  extended: ''
+- column_name: Descendent
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The name of the descendent SNOMED CT code
+  extended: ''
+- column_name: Active_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Active flag of the SNOMED CT Code. Fix = 1. There are no inactive flattend
+    hierarchy relationships.
+  extended: ''

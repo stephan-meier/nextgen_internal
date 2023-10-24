@@ -1,0 +1,641 @@
+table_name: dim_SnomedHorizontal
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_SnomedHorizontal_pk
+protect: 0
+columns:
+- column_name: dim_SnomedHorizontal_bk
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'The SNOMED CT horizontal business key. This is the Tree Vector of
+    this node. E.g.: for node 2.1 --> 0|1.1|2.1'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,107={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system unique key (also Tree Vector)
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,101={326D3142-FE18-417A-826C-19DE768FF16A},Bk,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: dim_Snomed_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The reference to the SNOMED CT business key
+  extended: ''
+- column_name: Snomed
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT name
+  extended: ''
+- column_name: LevelNumber
+  data_type: integer
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The level of this hierarchy node
+  extended: ''
+- column_name: TreeVector
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The tree vector text of this node separated by pipe |. E.g. SNOMED
+    CT Concept (SNOMED RT+CTV3)|Substance (substance)|Substance categorized by structure
+    (substance)|Chemical (substance)|Chemical categorized by structure (substance)|Organic
+    compound (substance)|Organic cyclic compound (substance)|Heterocyclic compound
+    (substance)|Azetidine derivative (substance)|Beta-lactam (substance)|Penicillin
+    (substance)|Substance with penicillin structure and antibacterial mechanism of
+    action (substance)|Broad spectrum penicillin (substance)|Aminopenicillin (substance)|Ampicillin
+    (substance)
+  extended: ''
+- column_name: dim_Snomed_Level00_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 00 code
+  extended: ''
+- column_name: Level00
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 00 name
+  extended: ''
+- column_name: dim_Snomed_Level01_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 01 code
+  extended: ''
+- column_name: Level01
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 01 name
+  extended: ''
+- column_name: dim_Snomed_Level02_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 02 code
+  extended: ''
+- column_name: Level02
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 02 name
+  extended: ''
+- column_name: dim_Snomed_Level03_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 03 code
+  extended: ''
+- column_name: Level03
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 03 name
+  extended: ''
+- column_name: dim_Snomed_Level04_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 04 code
+  extended: ''
+- column_name: Level04
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 04 name
+  extended: ''
+- column_name: dim_Snomed_Level05_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 05 code
+  extended: ''
+- column_name: Level05
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 05 name
+  extended: ''
+- column_name: dim_Snomed_Level06_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 06 code
+  extended: ''
+- column_name: Level06
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 06 name
+  extended: ''
+- column_name: dim_Snomed_Level07_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 07 code
+  extended: ''
+- column_name: Level07
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 07 name
+  extended: ''
+- column_name: dim_Snomed_Level08_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 08 code
+  extended: ''
+- column_name: Level08
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 08 name
+  extended: ''
+- column_name: dim_Snomed_Level09_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 09 code
+  extended: ''
+- column_name: Level09
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 09 name
+  extended: ''
+- column_name: dim_Snomed_Level10_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 10 code
+  extended: ''
+- column_name: Level10
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 10 name
+  extended: ''
+- column_name: dim_Snomed_Level11_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 11 code
+  extended: ''
+- column_name: Level11
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 11 name
+  extended: ''
+- column_name: dim_Snomed_Level12_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 12 code
+  extended: ''
+- column_name: Level12
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 12 name
+  extended: ''
+- column_name: dim_Snomed_Level13_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 13 code
+  extended: ''
+- column_name: Level13
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 13 name
+  extended: ''
+- column_name: dim_Snomed_Level14_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 14 code
+  extended: ''
+- column_name: Level14
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 14 name
+  extended: ''
+- column_name: dim_Snomed_Level15_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 15 code
+  extended: ''
+- column_name: Level15
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 15 name
+  extended: ''
+- column_name: dim_Snomed_Level16_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 16 code
+  extended: ''
+- column_name: Level16
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 16 name
+  extended: ''
+- column_name: dim_Snomed_Level17_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 17 code
+  extended: ''
+- column_name: Level17
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 17 name
+  extended: ''
+- column_name: dim_Snomed_Level18_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 18 code
+  extended: ''
+- column_name: Level18
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 18 name
+  extended: ''
+- column_name: dim_Snomed_Level19_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 19 code
+  extended: ''
+- column_name: Level19
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 19 name
+  extended: ''
+- column_name: dim_Snomed_Level20_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 20 code
+  extended: ''
+- column_name: Level20
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 20 name
+  extended: ''
+- column_name: dim_Snomed_Level21_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 21 code
+  extended: ''
+- column_name: Level21
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 21 name
+  extended: ''
+- column_name: dim_Snomed_Level22_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 22 code
+  extended: ''
+- column_name: Level22
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 22 name
+  extended: ''
+- column_name: dim_Snomed_Level23_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 23 code
+  extended: ''
+- column_name: Level23
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 23 name
+  extended: ''
+- column_name: dim_Snomed_Level24_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 24 code
+  extended: ''
+- column_name: Level24
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 24 name
+  extended: ''
+- column_name: dim_Snomed_Level25_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 25 code
+  extended: ''
+- column_name: Level25
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 25 name
+  extended: ''
+- column_name: dim_Snomed_Level26_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 26 code
+  extended: ''
+- column_name: Level26
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 26 name
+  extended: ''
+- column_name: dim_Snomed_Level27_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 27 code
+  extended: ''
+- column_name: Level27
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 27 name
+  extended: ''
+- column_name: dim_Snomed_Level28_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 28 code
+  extended: ''
+- column_name: Level28
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 28 name
+  extended: ''
+- column_name: dim_Snomed_Level29_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 29 code
+  extended: ''
+- column_name: Level29
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 29 name
+  extended: ''
+- column_name: dim_Snomed_Level30_bk
+  data_type: bigint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 30 code
+  extended: ''
+- column_name: Level30
+  data_type: nvarchar(4000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The SNOMED CT Level 30 name
+  extended: ''
+- column_name: Active_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Active flag of the SNOMED CT Code. Fix = 1. There are no inactive flattend
+    hierarchy relationships.
+  extended: ''

@@ -1,0 +1,86 @@
+table_name: dim_SprecPart
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_Sprec_pk
+protect: 0
+columns:
+- column_name: dim_SprecPart_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'The SPREC part business key: CodeSystem | Version | Code'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: CatalogueCodeSystem
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'fix: SPREC'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,218={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0=
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: CatalogueVersion
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The versionID, the Calculation Basis Year, the publishing year and
+    the version type. E.g. v3.0
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,218={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0=
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: CatalogueCode
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The SPREC part code E.g.: ASC, BMA, BLD etc.'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,218={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0=
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: SprecPart
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The official name of the SPREC part code. E.g.: Ascites fluid, Bone
+    marrow aspirate, Blood (whole) etc,'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,168={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0='
+- column_name: SprecPartAttribute
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The SPREC Part Attribute. E.g.: Fixation, Container, Material Type
+    etc.'
+  extended: ''

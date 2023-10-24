@@ -1,0 +1,404 @@
+table_name: dim_AccessDevice
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_AccessDevice_pk
+protect: 0
+columns:
+- column_name: dim_AccessDevice_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'The business key of the access device: dim_SourceSystem_bk | InternalId'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system unique key
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: dim_Patient_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The patient ID. Standard Format with leading zeros (e.g. 0003439499)
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,594={E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,77=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#SubjectPseudoIdentifier
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: dim_CaseAdministrative_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The administrative case business key. Standard Format with leading
+    zeros (e.g. 0008670934)
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,589={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,72=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#AdministrativeCase
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: dim_MedicalDevice_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The medical device bk accessing the patients body (in case, the information
+    is avaiable)
+  extended: ''
+- column_name: AccessDeviceTypeId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The interal source system ID device type accessing the patients body
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,182={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,3=349
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,8=19923001
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,4=true'
+- column_name: AccessDeviceType
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The interal source system text device type accessing the patients body
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,172={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0=
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false'
+- column_name: InsertationBodySiteId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The insertation body site internal source system ID
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,183={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,3=350
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,4=true
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,9=123037004'
+- column_name: InsertationBodySite
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The insertation body site internal source system text
+  extended: ''
+- column_name: PositionBodySiteId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The position in the body where the access device is working internal
+    source system ID
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,183={A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED
+    CT Map,4=true
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,9=123037004
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,3=351'
+- column_name: PositionBodySite
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The position in the body where the access device is working internal
+    source system text
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,172={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0='
+- column_name: InsertDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The insert date of the access device
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,60={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,3=193'
+- column_name: RemovalDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: The removal date of the access device
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,60={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,3=351'
+- column_name: DurationInSeconds
+  data_type: integer
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: The total duration the access device was inserted in the patient
+  extended: ''
+- column_name: Lumen
+  data_type: integer
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The number of lumens the access device consists of
+  extended: ''
+- column_name: dim_User_Insert_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The user which inserted the access device
+  extended: ''
+- column_name: dim_User_Remove_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The user which removed the access device
+  extended: ''
+- column_name: dim_AmbulatoryStayHist_Insert_bk
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The ambulatory stay business key at insert time of the access device,
+    in case of an ambulatory stay otherwise dummy value -> with this FK you'll get
+    the Nursing and Admin Organisational Unit in case of a ambulatory stay
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,199={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,90=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#HealthcareEncounter
+    > has identifier
+
+    {326D3142-FE18-417A-826C-19DE768FF16A},Bk,5=false'
+- column_name: dim_StationaryStayHist_Insert_bk
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The stationary stay business key at insert time of the access device,
+    in case of a stationary stay otherwise dummy value -> with this FK you'll get
+    the Nursing and Admin Organisational Unit in case of a stationary stay
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,199={326D3142-FE18-417A-826C-19DE768FF16A},Bk,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,90=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#HealthcareEncounter
+    > has identifier'
+- column_name: dim_BedSpace_Insert_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The bed space (Bettenstellplatz), in which the patient was located
+    when the access device was inserted
+  extended: ''
+- column_name: dim_Room_Insert_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The room, in which the patient was located when the access device was
+    inserted
+  extended: ''
+- column_name: dim_Station_Insert_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The station, in which the patient was located when the access device
+    was inserted
+  extended: ''
+- column_name: dim_Organisation_Nursing_Insert_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Redundant, in case the dim_Stationary/Ambulatory_Stay can be established
+    / The organisational nursing unit, in which the patient was located when the access
+    device was inserted
+  extended: ''
+- column_name: dim_Organisation_Admin_Insert_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Redundant, in case the dim_Stationary/Ambulatory_Stay can be established
+    / The organisational administrative unit, in which the patient was located when
+    the access device was inserted
+  extended: ''
+- column_name: dim_AmbulatoryStayHist_Removal_bk
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The stationary stay business key at removal time of the access device,
+    in case of a stationary stay otherwise dummy value -> with this FK you'll get
+    the Nursing and Admin Organisational Unit in case of a ambulatory stay
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,199={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,90=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#HealthcareEncounter
+    > has identifier
+
+    {326D3142-FE18-417A-826C-19DE768FF16A},Bk,5=false'
+- column_name: dim_StationaryStayHist_Removal_bk
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The stationary stay business key at removal time of the access device,
+    in case of a stationary stay otherwise dummy value -> with this FK you'll get
+    the Nursing and Admin Organisational Unit in case of a stationary stay
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,199={326D3142-FE18-417A-826C-19DE768FF16A},Bk,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,90=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#HealthcareEncounter
+    > has identifier'
+- column_name: dim_BedSpace_Removal_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The bed space (Bettenstellplatz), in which the patient was located
+    when the access device was removed
+  extended: ''
+- column_name: dim_Room_Removal_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The room, in which the patient was located when the access device was
+    removed
+  extended: ''
+- column_name: dim_Station_Removal_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The station, in which the patient was located when the access device
+    was removed
+  extended: ''
+- column_name: dim_Organisation_Nursing_Removal_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Redundant, in case the dim_Stationary/Ambulatory_Stay can be established
+    / The organisational nursing unit, in which the patient was located when the access
+    device was removed
+  extended: ''
+- column_name: dim_Organisation_Admin_Removal_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Redundant, in case the dim_Stationary/Ambulatory_Stay can be established
+    / The organisational administrative unit, in which the patient was located when
+    the access device was removed
+  extended: ''
+- column_name: CreatedDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The created datetime in the source system
+  extended: ''
+- column_name: UpdatedDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The updated datetime of the last change of this record
+  extended: ''

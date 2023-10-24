@@ -1,0 +1,155 @@
+table_name: dim_Appointment
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_Appointment_pk
+protect: 0
+columns:
+- column_name: dim_Appointment_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'Business key of the appointment, composed of: [dim_SourceSystem_bk]
+    + "|" + [InternalId]'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system unique key
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,101={326D3142-FE18-417A-826C-19DE768FF16A},Bk,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: Appointment
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The title of the appointment
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: AppointmentTypeId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system appointment type ID
+  extended: ''
+- column_name: AppointmentType
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The appointment type text
+  extended: ''
+- column_name: StartDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The start and time of the appointment
+  extended: ''
+- column_name: EndDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The etart and time of the appointment
+  extended: ''
+- column_name: DurationInMinutes
+  data_type: integer
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The duration of the appointment (calculated)
+  extended: ''
+- column_name: dim_Organisation_AdmissionNursing_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The nursing organisation nk, where the patient entered the hospital
+    the first time
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS'
+- column_name: dim_Organisation_AdmissionAdmin_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The adminstrative organisation, where this appoinment happens
+  extended: '{E8045424-6406-4D7B-924F-B041C2BA2DC5},MSSQLSRV2017,77={C3142383-5953-4722-91CE-D93B5C158E42},ExtCollation,20=Latin1_General_CI_AS'
+- column_name: PatientList
+  data_type: nvarchar(2000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The list of patients participating in this appointment
+  extended: ''
+- column_name: EmployeeList
+  data_type: nvarchar(2000)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: The list of employees participating in this appointment
+  extended: ''
+- column_name: RoomList
+  data_type: nvarchar(2000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The list of rooms participating in this appointment
+  extended: ''
+- column_name: DeviceList
+  data_type: nvarchar(2000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The list of devices participating in this appointment
+  extended: ''
+- column_name: more_fields_to_be_modelled
+  data_type: N/A
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: ''
+  extended: ''

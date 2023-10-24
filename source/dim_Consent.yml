@@ -1,0 +1,240 @@
+table_name: dim_Consent
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_Consent_pk
+protect: 0
+columns:
+- column_name: dim_Consent_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'The consent business key: dim_Patient_bk | InternalId'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The internal source system unique key: dim_Patient_bk | TypeId'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: dim_Patient_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The patient ID. Standard Format with leading zeros (e.g. 0003439499)
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,594={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,77=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#SubjectPseudoIdentifier
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: TypeId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The consent type Id as of the source system
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,675={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,4=true
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,75=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Consent
+    > hasTypeCode
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,29=60132005, 69658003, 410529002
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: ValidFrom
+  data_type: date
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The valid from date of this consent record
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,593={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,75=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Consent
+    > hasDateTime
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: ValidTo
+  data_type: date
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The valid to date of this consent record
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,57={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0='
+- column_name: Type
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The consent type text: general consent, informed biobank consent,
+    etc.'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,57={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0='
+- column_name: FormVersion
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The version of the consent form according to BASEC (Business Administration
+    System for Ethics Committees)
+
+    https://swissethics.ch/basec_frontend_faq/knowledgebase.php?article=17'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,603={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,85=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Consent
+    > hasTemplateIdentifier
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: StatusId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The consent status ID of this consent record
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,690={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,77=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Consent
+    > hasStatusCode
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,4=true
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,42=225795001, 261665006, 385645004,
+    443390004
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: Status
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The consent status text of this consent record.
+
+
+    Valid values for the general consent are:
+
+    Erteilt                                         Rule: current general consent
+    status is accepted
+
+    Abgelehnt                                  Rule: current general consent status
+    is refused
+
+    Informiert (vor 15.09.2020)         Rule: patient has been informed before 15.09.2020,
+    but never answered the consent
+
+    Informiert (nach 15.09.2020)      Rule: patient has been informed after 15.09.2020,
+    but never answered the consent
+
+    Kein Status (vor 01.01.2014)     Rule: patient was never hospitalized after 01.01.2014,
+    and therefore never had the chance to get a consent, because the law started only
+    on 01.01.2014
+
+    Kein Status (nach 01.01.2014)  Rule: patient was hospitalized after 01.01.2014,
+    but did not receive a consent for signature
+
+
+
+    Valid value for the informed biobank consent are:
+
+    Erteilt                Rule: current informed biobank consent status is accepted
+
+    Informiert          Rule: patient has been informed, but did not answer the informed
+    biobank consent
+
+    Abgelehnt        Rule: current inforemd biobank consent status is refused
+
+    Kein Status      Rule: never got an informed biobank consent
+
+
+    Review this rules during the project.'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,110={D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED
+    CT,0=
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0='
+- column_name: Active_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Active flag of the consent history entry
+  extended: ''

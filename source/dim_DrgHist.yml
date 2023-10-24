@@ -1,0 +1,276 @@
+table_name: dim_DrgHist
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_DrgHist_pk
+protect: 0
+columns:
+- column_name: dim_DrgHist_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'The DRG business key: CodeSystem | Version | Code'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: CatalogueCodeSystem
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'fix: DRG'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,218={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0=
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: CatalogueVersion
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The versionID, the Calculation Basis Year, the publishing year and
+    the version type. E.g. v9.0-2020-2020-A
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,218={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0=
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: CatalogueCode
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The DRG code E.g. A01A
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,218={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0=
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: CodeName
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The official name of the code
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,168={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0='
+- column_name: VersionID
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal DRG version number. E.g. v10.0 --> maps in most cases
+    directly to the year. E.g. v9.0 = 2020, v10.0 = 2021. Therefore it is redundant
+    information, but we keep it in the model for completeness
+  extended: ''
+- column_name: VersionYearCalculationBasis
+  data_type: integer
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The calcualtion basis year of ICD and CHOP catalogue
+  extended: ''
+- column_name: VersionYear
+  data_type: integer
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The version year oft the DRG Calalogue
+  extended: ''
+- column_name: VersionType
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The version type of the DRG catalogue: A = billing version (Abrechnungsversion)
+    / P = planning version (Planungsversion) / K = catalogue version (Katalogversion)'
+  extended: ''
+- column_name: CatalogueIdSourceSystem
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The Code Catalogue ID as of the source system. In most source systemes
+    the DRG catalogue gets imported and an internal code catalogue version is being
+    created and used as part of a coded DRG
+  extended: ''
+- column_name: CodeBasis
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The basis DRG code (ADRG). Normally the first 3 letters of the DRG
+    Code
+  extended: ''
+- column_name: CodeBasisName
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The basis DRG code text (text of ADRG)
+  extended: ''
+- column_name: CodeLetter
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The letter resp. first character of the DRG code
+  extended: ''
+- column_name: Mdc
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The major diagnostic Category (MDC) code / Hauptdiagnosegruppe-Code
+  extended: ''
+- column_name: MdcName
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The major diagnostic Category (MDC) code text / Hauptdiagnosegruppe-Code
+    Text
+  extended: ''
+- column_name: Partition
+  data_type: nvarchar(8)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The partition code of the DRG. O=operative partition, A = other Partition,
+    M = medical partition
+  extended: ''
+- column_name: PartitionName
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The partition code text of the DRG. operative partition, other Partition,
+    medical partition
+  extended: ''
+- column_name: CostWeight
+  data_type: float
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Cost weight with asset use costs (Anlagenutzungskosten (ANK))
+  extended: ''
+- column_name: MeanLengthOfStayInDays
+  data_type: float
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Mean lenght of stay in days
+  extended: ''
+- column_name: FirstDayWithReductionInDays
+  data_type: float
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: First day of cost weight reduction in case of a low outlier (Kurzlieger)
+  extended: ''
+- column_name: CostWeightPerDayReduction
+  data_type: float
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Cost weight reduction in case of a low outlier
+  extended: ''
+- column_name: FirstDayWithIncreaseInDays
+  data_type: float
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: First day of cost weight increase in case of a high outlier (Lanllieger)
+  extended: ''
+- column_name: CostWeightPerDayIncrease
+  data_type: float
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Cost weight increase in case of a high outlier
+  extended: ''
+- column_name: CostWeightPerDayExternalTransferReduction
+  data_type: float
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: Cost weight reduction in case of an external transfer (Externe Verlegung
+    Abschlag/Tag)
+  extended: ''
+- column_name: TransferFlatRate_Flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Flag which indicates, if in case of a transfer a flat rate is active.
+    1=yes / 0=no
+  extended: ''
+- column_name: ExceptionFromReadmission_Flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Flag which indicates, if in case of a readmission a case consoldiation
+    must not be done. 1=yes / 0 =no
+  extended: ''

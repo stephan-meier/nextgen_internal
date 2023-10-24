@@ -1,0 +1,46 @@
+table_name: dim_Organism
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_Organism_pk
+protect: 0
+columns:
+- column_name: dim_Organism_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'The business key of the organism: dim_SourceSystem_bk | internal source
+    system unique key'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system unique key
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,111={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,4=true'
+- column_name: Organism
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: The organism name as in the source system
+  extended: ''

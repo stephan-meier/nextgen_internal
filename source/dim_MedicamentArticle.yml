@@ -1,0 +1,611 @@
+table_name: dim_MedicamentArticle
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_MedicamentArticle_pk
+protect: 0
+columns:
+- column_name: dim_MedicamentArticle_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'Business key for a medicament article, composed of: [dim_SourceSystem_bk]
+    + "|" + [PHARMACODE]'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Internal source system unique key. In case of HCI data, this corresponds
+    to the column [PHARMACODE]
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: Phar
+  data_type: nvarchar(7)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Legacy format of Pharmacode (hospINDEX: ARTICLE/ART/PHAR), with leading
+    zeros'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,51={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false'
+- column_name: dim_MedicamentProduct_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Business key for a MedicamentProduct, composed of [dim_SourceSystem_bk]+"|"+[ProductNumber]
+    (hospINDEX: PRODUCT/PRD/PRDNO)'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,627={326D3142-FE18-417A-826C-19DE768FF16A},Bk,5=false
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,58=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Drug
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: ProductNumber
+  data_type: nvarchar(30)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Product number (hospINDEX: ARTICLE/ART/PRDNO)'
+  extended: ''
+- column_name: MedicamentArticleNameGerman
+  data_type: nvarchar(255)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Medicament article name in German
+  extended: ''
+- column_name: MedicamentArticleDescription
+  data_type: nvarchar(2000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Long description of medicament article in German (hospINDEX: ARTICLE/ART/DSCRLONGD)'
+  extended: ''
+- column_name: BrandnameSynonym
+  data_type: nvarchar(1000)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'First synonym of brand name (hospINDEX: ARTICLE/ART/SYN1D)'
+  extended: ''
+- column_name: Gtin
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'GTIN (Global Trade Item Number) of this medicament article (hospINDEX:
+    ARTICLE/ART/GTIN)'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,595={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,77=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Drug
+    > has product code
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: dim_Company_Manufacturer_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The manufacturer of the medicament package (hospINDEX: ARTICLE_X_ARTCOMP/COMPNO
+    > ROLE = ''H'')'
+  extended: ''
+- column_name: dim_Company_Distributor_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The distributor/supplier of the medicament package (hospINDEX: ARTICLE_X_ARTCOMP/COMPNO
+    > ROLE = ''L'')'
+  extended: ''
+- column_name: dim_Company_AuthHolder_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'The responsable representant of the medicament package (hospINDEX:
+    ARTICLE_X_ARTCOMP/COMPNO > ROLE = ''V'')'
+  extended: ''
+- column_name: SwissmedicNumber
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Swissmedic reference number (hospINDEX: ARTICLE/ART/SMNO'
+  extended: ''
+- column_name: SwissmedicRegistrationDate
+  data_type: date
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Date of first Swissmedic registration (hospINDEX: ARTICLE/ART/SMDAT)'
+  extended: ''
+- column_name: SwissmedicCancelDate
+  data_type: date
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Date of Swissmedic registration cancellation (hospINDEX: ARTICLE/ART/SMCDAT)'
+  extended: ''
+- column_name: BagDossierNumber
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'BAG dossier reference number (hospINDEX: ARTICLE/ART/ARTSL/BAGDOSSIER)'
+  extended: ''
+- column_name: Quantity
+  data_type: bigint
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Number of medicaments packed within this article (hospINDEX: ARTICLE/ART/QTY).
+    Refer to column [dim_Unit_Quantity_bk] for the unit associated with this column.'
+  extended: ''
+- column_name: dim_Unit_Quantity_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: Business key of the unit in which the column [Quantity] is provided
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,57={0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM
+    Map,5=false'
+- column_name: dim_Atc_bk
+  data_type: nvarchar(7)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: ATC-Code (e.g. "A02AA01"). The SPHN data set defines ATC on level substance,
+    but ATC is on level medicament, therefore its here.
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,644={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,74=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Substance
+    > has code
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,0=
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: GroupCode
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'GroupCode (hospINDEX: ARTICLE/ART/GRPCD) categorizes each medicament
+    article into one of the following main product groups:
+
+    M1 = Swissmedic approved medicament article
+
+    ? Includes Swissmedic drugs A-C, blood products, vaccines and immunoglobulins
+
+    ? CDSO (Assortment Code) starting with 01, 02, 03, 07
+
+
+    M9
+
+    ? Includes Swissmedic drugs D-E, homeopathics, anthroposophics, medical substances,
+    medicinal drugs, medical devices (for intake or application to lips, skin, nails,
+    etc.), import products, hospital proprietary products
+
+    ? CDSO (Assortment Code) starting with 04, 05, 06, 08, 10
+
+
+    P1
+
+    ? Includes medical devices, baby, food
+
+    ? CDSO (Assortment Code) starting with 19, 20, 21
+
+
+    P2
+
+    ? Includes cosmetics and perfumes
+
+    ? CDSO (Assortment Code) starting with 22
+
+
+    P9
+
+    ? Includes all other pharmaceutical products
+
+    ? CDSO (Assortment Code) starting with 30, 31, 32, 33'
+  extended: ''
+- column_name: AssortmentCode1
+  data_type: nvarchar(55)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'First assortment code (hospINDEX: ARTICLE/ART/CDSO1)'
+  extended: ''
+- column_name: AssortmentCode2
+  data_type: nvarchar(55)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Second assortment code (hospINDEX: ARTICLE/ART/CDSO2)'
+  extended: ''
+- column_name: ArticleType
+  data_type: smallint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Type of medicament article (hospINDEX: ARTICLE/ART/ARTTYP) categorized
+    as follows:
+
+    0 = Typical commercial article, order unit
+
+    Note: In some rarer cases, an article can only be ordered in a package of type=0
+    (e.g. for a sixpack of  ""Bibi nuggis"" or some infusions), while it then gets
+    resold or used in the smaller detail unit. In such a case, the articles are related
+    to a detail sales unit in ARTCH, ChainType ORD
+
+
+    1 = Detail sales unit, related to an order unit in ARTCH ChainType ORD
+
+
+    2 = Pricecode / Pharmacode for:
+
+    ? Pharmagroupcode for homeopathics, anthroposophics and specific immunotherapeutics
+    according to the Federal Office of Public Health (FOpH)
+
+    ? Price code: present article is "grouping pharmacode", which relates to a real
+    homeopathic/anthroposphic article in ARTCH, ChainType PRI
+
+    ? Services (netCare) and provided services (pharmacies, drug stores), no link
+    to ChainType PRI
+
+
+    Note: Rare exceptions exist where article shall not show up in typical usage scenarios
+    (e.g. articles not allowed for new patients, but only for existing users)
+
+
+    3 = Pharmacodes for MiGeL-positions
+
+    ? MiGeL / LiMA price code: The present article is a MiGeL/LiMA-Position and is
+    related to a real article in ARTCH, chainType MPR
+
+
+    4 = Dispensation Unit (1 pill, 1 vial, etc.)
+
+    ? Single dose: the present article is a single-dose-unit; it''s related to a "normal"
+    article in ARTCH, ChainType SDO
+
+
+    The documentation for ARTCH and ChainType (CHTYPE) can be found in the ARTICLE
+    entity of HCI Solutions here: https://index.hcisolutions.ch/DataDoc/element/ARTICLE/ART/ARTCH?showEol=true'
+  extended: ''
+- column_name: ArticleNumber
+  data_type: nvarchar(100)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Company''s first article number on package (hospINDEX: ARTICLE/ART/ARTCOMP/ARTNO1)'
+  extended: ''
+- column_name: SupplyCategory
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Supply category indicating restrictions associated with the sale and
+    dispensation of this medicament article to patients (hospINDEX: ARTICLE/ART/SMCAT):
+
+    A = One-time dispensation based on medical prescription; subject to aggravated
+    medical prescription requirements
+
+    B = Repeated dispensation based on medical prescription; subject to medical prescription
+
+    C = Dispensation without prescription after consultation with medical professional;
+    restricted to pharmacies
+
+    D = Dispensation without prescription after consultation with medical professional;
+    restricted to pharmacies and drugstores
+
+    E = Dispensation without prescription; available in all stores'
+  extended: ''
+- column_name: Weight
+  data_type: integer
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Weight of medicament article (whole package) in grams (hospINDEX:
+    ARTICLE/ART/WEIGHT)'
+  extended: ''
+- column_name: Width
+  data_type: integer
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Width of medicament article in mm (hospINDEX: ARTICLE/ART/SIZE/WIDTH)'
+  extended: ''
+- column_name: Height
+  data_type: integer
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Height of medicament article in mm (hospINDEX: ARTICLE/ART/SIZE/HEIGHT)'
+  extended: ''
+- column_name: Depth
+  data_type: integer
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Depth of medicament article in mm (hospINDEX: ARTICLE/ART/SIZE/DEPTH)'
+  extended: ''
+- column_name: ClinicalPackage_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Flag (hospINDEX: ARTICLE/ART/CLINCD) indicating whether this package
+    is a clinical package, i.e. may be delivered to hospitals, pharmacies, doctors,
+    etc.'
+  extended: ''
+- column_name: HospitalPackage_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Flag (hospINDEX: ARTICLE/ART/HOSPCD) indicating whether this package
+    is a hospital package, i.e. may only be delivered to hospitals'
+  extended: ''
+- column_name: VatCode
+  data_type: smallint
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Code for VAT (Value Added Tax) ? 1 = Full; 2 = Reduced; 3 = Excluded
+    (hospINDEX: ARTICLE/ART/VAT)'
+  extended: ''
+- column_name: SaleCode
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Indicates if medicament article is available commercially, with the
+    following categories (hospINDEX: ARTICLE/ART/SALECD):
+
+    R = not yet available commercially (includes Swissmedic accepted articles and
+    parapharmaceutical articles)
+
+    N = commercially available
+
+    H = out of sale
+
+    Note on H: after at least 2 years ? set to deleted (DEL = true); after at least
+    4 additional months ? deleted articles are removed from the core data as per March
+    15th or September 15th
+
+    P = provisional (provisionally registered pharmacodes, only for INDEX-products
+    logINDEX and insureINDEX; may never be published elsewhere)'
+  extended: ''
+- column_name: OutOfSaleDate
+  data_type: date
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Out of sale date (hospINDEX: ARTICLE/ART/OUTSAL)'
+  extended: ''
+- column_name: ExpirationDelay
+  data_type: integer
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Number of months after production where expiration is reached (hospINDEX:
+    ARTICLE/ART/EXP)'
+  extended: ''
+- column_name: Refrigeration_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Flag indicating whether this medicament article must be refrigerated
+    during storage (hospINDEX: ARTICLE/ART/COOL)'
+  extended: ''
+- column_name: StockTemperature
+  data_type: nvarchar(55)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Stock temperature in degrees centigrade (hospINDEX: ARTICLE/ART/TEMP).
+    This may be provided either as a value (e.g. ''10''), or as a temperature range
+    (e.g. ''-15/-30'')'
+  extended: ''
+- column_name: ColdChain_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Flag (hospINDEX: ARTICLE/ART/COLDCHAIN) indicating whether the predetermined
+    temperature ranges must be ensured during the entire transport chain of this medicament
+    article'
+  extended: ''
+- column_name: ProtectFromLight_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Flag (hospINDEX: ARTICLE/ART/LIGHT) indicating whether this medicament
+    article must be stored protected from light'
+  extended: ''
+- column_name: PackageType
+  data_type: nvarchar(100)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Type of package (e.g. bottle, tube, vial, etc. ? hospINDEX: ARTICLE/ART/PCKTYPD)'
+  extended: ''
+- column_name: PackageTypeCode
+  data_type: nvarchar(100)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Package type code (hospINDEX: ARTICLE/ART/PCKTYPCD)'
+  extended: ''
+- column_name: PackageInBundleMultiplier
+  data_type: nvarchar(55)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Number of packages in a bundle (e.g. 10 x 20 tablets ? hospINDEX:
+    ARTICLE/ART/MULT)'
+  extended: ''
+- column_name: BundleQuantityCount
+  data_type: integer
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Number of items in bundle (hospINDEX: ARTICLE/ART/NOPCS)'
+  extended: ''
+- column_name: LoaArticle_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Flag (hospINDEX: ARTICLE/ART/LOACD) indicating whether this medicament
+    article is part of LOA (Leistungsorientierte Abgeltung), meaning that tax points
+    can be added to it'
+  extended: ''
+- column_name: Ce_flag
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: 'Flag (hospINDEX: ARTICLE/ART/CE) indicating whether medicament article
+    contains CE-mark, i.e. corresponds to European guidelines on product safety'
+  extended: ''

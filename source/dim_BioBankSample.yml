@@ -1,0 +1,390 @@
+table_name: dim_BioBankSample
+table_type: scd2
+delete_detection: 1
+dummy: 1
+pk_name: dim_BioBankSample_pk
+protect: 0
+columns:
+- column_name: dim_BioBankSample_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 1
+  pk: 1
+  default: ''
+  description: 'The biobank sample business key: dim_SourceSystem_bk | InternalId'
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,567={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,0=
+
+    {326D3142-FE18-417A-826C-19DE768FF16A},Bk,4=true
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: dim_SourceSystem_bk
+  data_type: nvarchar(5)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The source system bk, where the internal id comes from
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: InternalId
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal source system unique key. Mostly the IBAN code or a reference
+    and lot code from the tube
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,50={A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,4=true'
+- column_name: dim_Patient_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The patient ID. Standard Format with leading zeros (e.g. 0003439499)
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,594={E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,4=true
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,77=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#SubjectPseudoIdentifier
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false'
+- column_name: dim_BioSample_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The biosample from which the biobanksample has been derived
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,581={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,63=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Biosample
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: dim_BioBankSample_Parent_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The biobank parent sample, in case this biobank sample has been derived
+    from another biobank sample
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,585={E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,5=false
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,67=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Biobanksample
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false'
+- column_name: MaterialClass
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The class of material (liquid or tissue or bacteria)
+  extended: ''
+- column_name: MaterialTypeId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: "The internal material type id\n\nValue set for liquids:\nAscites fluid;\n\
+    Amniotic fluid;\nBronchoalveolar lavage; Blood (whole);\nBone marrow aspirate;\n\
+    Breast milk;\nBuccal cells;\nNon-density-gradient-centrifugation-separated buffy\
+    \ coat, viable;\nNon-density-gradient-centrifugation-separated buffy coat, nonviable;\n\
+    Density-gradient-centrifugation-separated mononuclear cells, viable;\nFresh cells\
+    \ from nonblood specimen type;\nCells from nonblood specimen type (e.g. ascites,\
+    \ amniotic), viable;\nCord blood;\nCerebrospinal fluid;\nEnriched (physicochemically)\
+    \ circulating tumor cells;\nDental pulp;\nDried whole blood (e.g. Guthrie cards);\n\
+    Nasal washing;\nDensity-gradient-centrifugation-separated mononuclear cells, nonviable;\n\
+    Cells from nonblood specimen type (e.g. ascites, amniotic), nonviable;\nPleural\
+    \ fluid;\nPlasma, single spun;\nPlasma, double spun;\nRed blood cells;\nSaliva;\n\
+    Semen;\nSerum;\nSputum;\nStool;\nSynovial fluid;\nTears;\n24 h urine;\nUrine,\
+    \ random (\u201Cspot\u201D);\nUrine, first morning;\nUrine, timed;\nDNA;\nRNA;\n\
+    Other\n\nValue set for tissues:\nBone;\nFresh cells from nonblood specimen type\
+    \ (e.g. biopsy);\nCells from fine needle aspirate;\nCells from laser capture microdissected\
+    \ tissue;\nCells from nonblood specimen type (e.g. dissociated tissue), nonviable;\n\
+    Cells from nonblood specimen type (e.g. dissociated tissue), viable;\nDisrupted\
+    \ tissue, nonviable;\nDNA;\nHair;\nNails;\nPlacenta;\nRNA;\nSolid tissue;\nTeeth;\n\
+    Other"
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,771={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,183=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Biosample
+    > has material type liquid / https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Biosample
+    > has material type tissue
+
+    {D9040F73-8393-4F9F-9CBA-14A5D1CF606B},SNOMED CT,18=32457005,413675001
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,4=true
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,4=true
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,4=true'
+- column_name: MaterialType
+  data_type: nvarchar(50)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The internal text of the material type
+  extended: ''
+- column_name: FixationTypeId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The the internal fixation or stabilization type ID
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,615={0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,99=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Biosample
+    (wrong in SPHN) > has fixation type
+
+    {E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,4=true
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,4=true'
+- column_name: FixationType
+  data_type: nvarchar(100)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: "The fixation or stabilization type according to SPREC definition:\n\
+    Value set according to SPHN: Alcohol based; Aldehyde based; Allprotect \xAE tissue\
+    \ reagent; Heat stabilization; Neutral buffered formalin; Nonaldehyde based without\
+    \ acetic acid; Nonaldehyde with acetic acid; Nonbuffered formalin; Optimum cutting\
+    \ temperature medium; PAXgene tissue; RNA Later; Snap freezing; Vacuum technology\
+    \ stabilization; UNK; Other"
+  extended: ''
+- column_name: StorageContainerTypeId
+  data_type: nvarchar(10)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The long term storage container internal source system ID
+  extended: '{110D2C13-5BEC-4BAB-86BB-2EDD468E983B},MSAZURE,620={E0561944-9BC9-45C8-9EAC-A32889D393B1},Clinerion,5=false
+
+    {EFAFE94A-CD20-4057-A887-D22462C3809A},Custom Map,4=true
+
+    {8166724F-12D9-4C9E-A2A4-4EF2709C9D25},LOINC Map,5=false
+
+    {A562A371-F3D5-4447-8368-F47DB599C9CD},Nk,5=false
+
+    {A10CFFE6-8368-4738-833A-92FB1AF4FB19},SNOMED CT Map,5=false
+
+    {75BE7DBB-9514-46C6-AE7D-683DBAF26A26},Temporal,5=false
+
+    {0CE9CD7B-EE17-41B5-BF74-07654B451B91},UCUM Map,5=false
+
+    {0C0C2114-E72C-458E-B900-6195912DC528},SPHNConceptID,103=https://www.biomedit.ch/rdf/sphn-ontology/sphn/2023/2#Biosample
+    (wrong in SPHN) > has storage container
+
+    {942E051F-7EC0-4E5C-92B8-144A39DCB1BC},SPREC Map,4=true'
+- column_name: StorageContainerType
+  data_type: nvarchar(100)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The long term storage container type
+  extended: ''
+- column_name: StorageTemperature
+  data_type: integer
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: The storage temperature in the freezer
+  extended: ''
+- column_name: StorageLocation
+  data_type: nvarchar(100)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: The storage location in the freezer
+  extended: ''
+- column_name: Status
+  data_type: nvarchar(100)
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: The status of the biobanksample (e.g. in the freezer, in prepartion,
+    unfrozen etc.)
+  extended: ''
+- column_name: PreCentrifugationDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: The date the pre centrifugation happend
+  extended: ''
+- column_name: FirstCentrifugationDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: The date the first centrifugation happend
+  extended: ''
+- column_name: SecondCentrifugationDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: The date the second centrifugation happend
+  extended: ''
+- column_name: FreezeDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: The freeze date
+  extended: ''
+- column_name: UnFreezeDate
+  data_type: datetime
+  date_dim: 1
+  mandatory: 'NULL'
+  bk: 0
+  pk: 0
+  default: ''
+  description: The unfreeze date
+  extended: ''
+- column_name: dim_Organisation_Sender_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The organisational unit, which sent in the biosample
+  extended: ''
+- column_name: CollectionType
+  data_type: nvarchar(100)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The reason why this biobanksample has been frozen (e.g. Institutional
+    in the sense of reserve for patientes with an informed biobank consent or for
+    a specific study)
+  extended: ''
+- column_name: Volume
+  data_type: float
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The volumn in [mL]
+  extended: ''
+- column_name: dim_Study_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: In case the biobanksample has be collected for a specific study, the
+    study business key
+  extended: ''
+- column_name: dim_StudyParticipantMap_bk
+  data_type: nvarchar(56)
+  date_dim: 1
+  mandatory: NOT NULL
+  bk: 0
+  pk: 0
+  default: ''
+  description: The study particpant pseudo id from dim_StudyParticipantMap
+  extended: ''
