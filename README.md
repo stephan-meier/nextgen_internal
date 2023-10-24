@@ -1,4 +1,4 @@
 # nextgen_internal
 
-# NextGen SQL Generator Sandbox
+NextGen SQL Generator Sandbox
 
