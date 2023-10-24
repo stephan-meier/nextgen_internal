@@ -1,0 +1,16 @@
+import xmltodict
+import json
+
+xmlInFile = "C:/Users/steph/Downloads/PDM_CHDM.pdm"
+jsonOutFile = "C:/Users/steph/Downloads/PDM_CHDM.json"
+
+with open(xmlInFile, encoding='utf-8') as fd:
+    doc = xmltodict.parse(fd.read(),process_namespaces=True)
+
+file = open(jsonOutFile,"w")
+json.dump(doc,file)
+file.close()
+
+
+
+

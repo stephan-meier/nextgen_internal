@@ -1,0 +1,16 @@
+﻿begin
+    declare @view_exists int
+    declare @sql nvarchar(max)
+    select @view_exists = 1 from sysobjects where id = object_id('{{v_schema_name}}.v_{{v_src_table.table_name}}_90') and type = 'V'
+    if @view_exists is NULL
+    begin
+        SET @sql = 'create view {{v_schema_name}}.v_{{v_src_table.table_name}}_90 as
+        select
+            {%- for feld in v_src_table.columns %}
+            {{ "," if not loop.first else " " }}{{feld["column_name"]}} = CAST(NULL as {{feld["data_type"]}})
+            {%- endfor %}
+        where 1=2
+        '
+        exec sp_executesql @sql
+    end
+end

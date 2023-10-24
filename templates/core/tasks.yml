@@ -1,0 +1,58 @@
+﻿Version: 2
+schemas:
+-   db_schema: stg
+    name: sta_schema_name
+-   db_schema: dwh
+    name: dwh_schema_name
+-   db_schema: rep
+    name: rep_schema_name
+    
+tasks:
+-   name: sta_90er_view
+    quell_schema: sta_schema_name
+    tmpl_name: tmpl_sta_90er_view_SQL
+    ziel_schema: sta_schema_name
+
+-   name: sta_91er_view
+    quell_schema: sta_schema_name
+    tmpl_name: tmpl_sta_91er_view_SQL
+    ziel_schema: sta_schema_name
+
+-   name: sta_table                 
+    quell_schema: sta_schema_name 
+    ziel_schema: sta_schema_name 
+    tmpl_name: tmpl_sta_table_SQL
+
+-   name: dwh_table                 
+    quell_schema: dwh_schema_name 
+    ziel_schema: dwh_schema_name 
+    tmpl_name: tmpl_dwh_table_SQL
+
+-   name: rep_views                 
+    quell_schema: rep_schema_name 
+    ziel_schema: dwh_schema_name 
+    tmpl_name: tmpl_rep_views_SQL
+
+-   name: proc_sta_dummy            
+    quell_schema: sta_schema_name 
+    ziel_schema: sta_schema_name 
+    tmpl_name: tmpl_proc_sta_dummy_SQL
+
+-   name: proc_sta_full_load        
+    quell_schema: sta_schema_name 
+    ziel_schema: sta_schema_name 
+    tmpl_name: tmpl_proc_sta_full_load_SQL
+
+-   name: proc_sta_delete_detection 
+    quell_schema: sta_schema_name 
+    ziel_schema: dwh_schema_name 
+    tmpl_name: tmpl_proc_sta_delete_detection_SQL
+
+-   name: proc_sta_historization    
+    quell_schema: dwh_schema_name 
+    ziel_schema: sta_schema_name 
+    tmpl_name: tmpl_proc_sta_historization_SQL
+
+
+
+

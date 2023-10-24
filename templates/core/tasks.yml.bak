@@ -1,0 +1,20 @@
+﻿
+
+sta_schema_name = 'stg'
+dwh_schema_name = 'dwh'
+rep_schema_name = 'rep'
+
+
+
+'sta_90er_view',
+sta_schema_name,
+sta_schema_name,
+tmpl_sta_90er_view_SQL
+
+
+'sta_91er_view',
+sta_schema_name,
+sta_schema_name,
+tmpl_sta_91er_view_SQL
+
+

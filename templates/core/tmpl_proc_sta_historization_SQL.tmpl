@@ -1,0 +1,160 @@
+{# bk suchen, das letzte Feld mit bk Flag wird genommen! #}
+{%- set ns = namespace(bk_name='') -%}
+{%- for feld in v_src_table.columns -%}
+{%- if feld["bk"] == 1 %} {%- set ns.bk_name = feld["column_name"] -%} {%- endif %}
+{%- endfor -%}
+
+if exists (select 1 
+from sysobjects where id = object_id('{{v_src_schema_name}}.usp_{{v_src_table.table_name}}_historization')
+  and type = 'P')
+  drop procedure {{v_src_schema_name}}.usp_{{v_src_table.table_name}}_historization
+;
+
+CREATE PROCEDURE {{v_src_schema_name}}.usp_{{v_src_table.table_name}}_historization
+    @dwh_BatchRunIdInsert     int
+    ,@dwh_Init_ValidFrom      datetime
+    ,@dwh_ValidFrom           datetime    
+    ,@dwh_ValidTo             datetime    
+AS
+BEGIN       
+    
+    IF @dwh_ValidFrom IS NULL
+    BEGIN
+        SELECT @dwh_ValidFrom = convert(datetime2(0),getdate())
+    END
+    
+    SELECT @dwh_ValidTo = dateadd(ss,-1,@dwh_ValidFrom)
+
+    -- Upsert case
+    INSERT INTO {{v_schema_name}}.{{v_src_table.table_name}}  
+        (
+        {%- for feld in v_src_table.columns %}
+        {{ "," if not loop.first else " " }}{{feld["column_name"]}}
+        {%- set data_type = feld["data_type"]  -%}
+        {%- if data_type == 'datetime' or data_type == 'date' %}
+        ,dim_Date_{{feld["column_name"]}}_bk
+        {%- endif %}
+        {%- if data_type == 'datetime' %}
+        ,dim_Time_{{feld["column_name"]}}_bk
+        {%- endif %}    
+        {%- endfor %}
+        ,dwh_ValidFrom
+        ,dwh_ValidTo
+        ,dwh_CurrentFlag
+        ,dwh_DeleteFlag     
+        ,dwh_EarlyArriveFlag    
+        ,dwh_EarlyArriveField
+        ,dwh_InsertDate
+        ,dwh_UpdateDate
+        ,dwh_BatchRunIdInsert
+        ,dwh_BatchRunIdUpdate
+        )
+    SELECT
+        {%- for feld in v_src_table.columns %}
+        {{ "," if not loop.first else " " }}{{feld["column_name"]}}
+        {%- set data_type = feld["data_type"]  -%}
+        {%- if data_type == 'datetime' or data_type == 'date' %}
+        ,dim_Date_{{feld["column_name"]}}_bk
+        {%- endif %}
+        {%- if data_type == 'datetime' %}
+        ,dim_Time_{{feld["column_name"]}}_bk
+        {%- endif %}    
+        {%- endfor %}
+        --,dwh_ValidFrom            = getdate()
+        ,dwh_ValidFrom              = @dwh_ValidFrom
+        ,dwh_ValidTo                = '9999-12-31 23:59:59'
+        ,dwh_CurrentFlag            = 1
+        ,dwh_DeleteFlag     
+        ,dwh_EarlyArriveFlag        
+        ,dwh_EarlyArriveField       
+        ,dwh_InsertDate             = getdate()
+        ,dwh_UpdateDate             = null
+        --,dwh_BatchRunIdInsert     = -1
+        ,dwh_BatchRunIdInsert       = @dwh_BatchRunIdInsert
+        ,dwh_BatchRunIdUpdate       = null     
+    FROM (
+         MERGE {{v_schema_name}}.{{v_src_table.table_name}}  as dwh
+
+    USING (
+        SELECT                     
+            {%- for feld in v_src_table.columns %}
+            {{ "," if not loop.first else " " }}{{feld["column_name"]}}
+            {%- set data_type = feld["data_type"]  -%}
+            {%- if data_type == 'datetime' or data_type == 'date' %}
+            ,dim_Date_{{feld["column_name"]}}_bk
+            {%- endif %}
+            {%- if data_type == 'datetime' %}
+            ,dim_Time_{{feld["column_name"]}}_bk
+            {%- endif %}    
+            {%- endfor %}
+            ,dwh_DeleteFlag
+            ,dwh_EarlyArriveFlag        = 0 
+            ,dwh_EarlyArriveField       = '#NA#'
+        FROM {{v_src_schema_name}}.{{v_src_table.table_name}} stg 
+        ) as stg
+        ON {{v_schema_name}}.{{ns.bk_name}} = {{v_src_schema_name}}.{{ns.bk_name}}
+          AND {{v_schema_name}}.dwh_CurrentFlag = 1
+        WHEN MATCHED AND
+            (
+            {%- for feld in v_src_table.columns %}
+            {{ "OR" if not loop.first else "" }} {{v_schema_name}}.{{feld["column_name"]}} <> {{v_src_schema_name}}.{{feld["column_name"]}}
+            {%- set data_type = feld["data_type"]  -%}
+            {%- if data_type == 'datetime' or data_type == 'date' %}
+            OR {{v_schema_name}}.dim_Date_{{feld["column_name"]}}_bk <> {{v_src_schema_name}}.dim_Date_{{feld["column_name"]}}_bk
+            {%- endif %}
+            {%- if data_type == 'datetime' %}
+            OR {{v_schema_name}}.dim_Time_{{feld["column_name"]}}_bk <> {{v_src_schema_name}}.dim_Time_{{feld["column_name"]}}_bk
+            {%- endif %}    
+            {%- endfor %}           
+            OR  {{v_schema_name}}.dwh_DeleteFlag       <> {{v_src_schema_name}}.dwh_DeleteFlag     
+            OR  {{v_schema_name}}.dwh_EarlyArriveFlag  <> {{v_src_schema_name}}.dwh_EarlyArriveFlag
+            OR  {{v_schema_name}}.dwh_EarlyArriveField <> {{v_src_schema_name}}.dwh_EarlyArriveField
+            )
+        THEN UPDATE SET
+             {{v_schema_name}}.dwh_CurrentFlag          = 0
+            ,{{v_schema_name}}.dwh_ValidTo              = @dwh_ValidTo
+            ,{{v_schema_name}}.dwh_UpdateDate           = getdate()
+            ,{{v_schema_name}}.dwh_BatchRunIdUpdate     = @dwh_BatchRunIdInsert
+        OUTPUT 
+            $action as Act
+            ,{{v_src_schema_name}}.*
+    ) MergeOutput 
+    WHERE MergeOutput.Act = 'UPDATE'
+
+--- hier war mal ein Strichpunkt
+
+    -- new records: Insert
+    INSERT INTO {{v_schema_name}}.{{v_src_table.table_name}}
+    SELECT 
+        {%- for feld in v_src_table.columns %}
+        {{ "," if not loop.first else " " }}{{feld["column_name"]}}
+        {%- set data_type = feld["data_type"]  -%}
+        {%- if data_type == 'datetime' or data_type == 'date' %}
+        ,dim_Date_{{feld["column_name"]}}_bk
+        {%- endif %}
+        {%- if data_type == 'datetime' %}
+        ,dim_Time_{{feld["column_name"]}}_bk
+        {%- endif %}    
+        {%- endfor %}
+        --,dwh_ValidFrom                = '2023-08-06 14:00:00'
+        ,dwh_ValidFrom              = @dwh_Init_ValidFrom
+        ,dwh_ValidTo                = '9999-12-31 23:59:59'
+        ,dwh_CurrentFlag            = 1
+        ,dwh_DeleteFlag     
+        ,dwh_EarlyArriveFlag        = 0 
+        ,dwh_EarlyArriveField       = '#NA#'
+        ,dwh_InsertDate             = getdate()
+        ,dwh_UpdateDate             = null
+        ,dwh_BatchRunIdInsert       = @dwh_BatchRunIdInsert
+        --,dwh_BatchRunIdInsert     = -1
+        ,dwh_BatchRunIdUpdate       = null
+    FROM {{v_src_schema_name}}.{{v_src_table.table_name}} stg
+    WHERE NOT EXISTS (          
+        SELECT *
+        FROM {{v_schema_name}}.{{v_src_table.table_name}} dwh
+        WHERE {{v_schema_name}}.{{ns.bk_name}} = {{v_src_schema_name}}.{{ns.bk_name}}
+        AND {{v_schema_name}}.dwh_CurrentFlag    = 1
+        )
+        
+END
+

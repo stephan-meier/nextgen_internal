@@ -1,0 +1,39 @@
+{%- set ns = namespace(has_pk=0) -%}
+if exists (select 1 
+from  sysobjects where id = object_id('{{v_schema_name}}.{{v_src_table.table_name}}')
+ and type = 'U')
+ begin
+  print('exists')
+  exec sp_rename '{{v_schema_name}}.{{v_src_table.table_name}}', 'xxx_{{v_src_table.table_name}}_{{v_ts}}'
+  exec sp_rename '{{v_schema_name}}.{{v_src_table.table_name}}_pk', 'xxx_{{v_src_table.table_name}}_pk_{{v_ts}}'
+end
+;
+
+create table {{v_schema_name}}.{{v_src_table.table_name}} (
+    {{v_src_table.table_name}}_sid integer NOT NULL IDENTITY(1,1),
+    {%- for feld in v_src_table.columns %}
+    {%- if feld["pk"] == 1 %} {%- set ns.has_pk = 1 -%} {%- endif %}
+    {{ "," if not loop.first else " " }}{{feld["column_name"]}} {{feld["data_type"]}} {{feld["mandatory"]}}
+    {%- set data_type = feld["data_type"]  -%}
+    {%- if data_type == 'datetime' or data_type == 'date' %}
+    ,dim_Date_{{feld["column_name"]}}_bk nvarchar(10) {{feld["mandatory"]}}
+    {%- endif %}
+    {%- if data_type == 'datetime' %}
+    ,dim_Time_{{feld["column_name"]}}_bk nvarchar(8) {{feld["mandatory"]}}
+    {%- endif %}
+    {%- endfor -%}
+    -- Standard fields   
+    ,dwh_ValidFrom datetime NOT NULL
+    ,dwh_ValidTo datetime NOT NULL
+    ,dwh_CurrentFlag integer NOT NULL
+    ,dwh_DeleteFlag integer NOT NULL
+    ,dwh_EarlyArriveFlag integer NOT NULL
+    ,dwh_EarlyArriveField nvarchar(255) NOT NULL
+    ,dwh_InsertDate datetime NOT NULL
+    ,dwh_UpdateDate datetime NULL
+    ,dwh_BatchRunIdInsert integer NOT NULL
+    ,dwh_BatchRunIdUpdate integer NULL
+    {# mandatory constraint SID  #}
+    ,constraint {{v_src_table.table_name}}_pk primary key ({{v_src_table.table_name}}_sid)
+)
+;

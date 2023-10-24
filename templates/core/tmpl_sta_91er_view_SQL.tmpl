@@ -1,0 +1,21 @@
+﻿if exists (select 1 
+from  sysobjects 
+where id = object_id('{{v_schema_name}}.v_{{v_src_table.table_name}}_91')
+    and type = 'V')
+drop view {{v_schema_name}}.v_{{v_src_table.table_name}}_91
+;
+
+create view {{v_schema_name}}.v_{{v_src_table.table_name}}_91 as
+select
+    {%- for feld in v_src_table.columns %}
+    {{ "," if not loop.first else " " }}{{feld["column_name"]}} = isNULL({{feld["column_name"]}}, {{feld["default"]}}) 
+    {%- set data_type = feld["data_type"]  -%}
+    {%- if data_type == 'datetime' or data_type == 'date' %}
+    , dim_Date_{{feld["column_name"]}}_bk = isNULL(CAST({{feld["column_name"]}} as date), {{feld["default"]}})
+    {%- endif %}
+    {%- if data_type == 'datetime' %}
+    , dim_Time_{{feld["column_name"]}}_bk = isNULL(CAST({{feld["column_name"]}} as time), {{feld["default"]}})
+    {%- endif %}
+    {%- endfor %}
+from {{v_schema_name}}.v_{{v_src_table.table_name}}_90
+where 1=1

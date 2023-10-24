@@ -1,0 +1,27 @@
+if exists (select 1 
+
+from sysobjects where id = object_id('{{v_schema_name}}.usp_{{v_src_table.table_name}}_dummy')
+ and type = 'P')
+ drop procedure {{v_schema_name}}.usp_{{v_src_table.table_name}}_dummy
+;
+create procedure {{v_schema_name}}.usp_{{v_src_table.table_name}}_dummy
+  @BatchRunIdInsert int
+as
+begin
+  insert into {{v_schema_name}}.{{v_src_table.table_name}}
+  select
+    {%- for feld in v_src_table.columns %}
+    {{ "," if not loop.first else " " }}{{feld["column_name"]}} = {{feld["default"]}}
+    {%- set data_type = feld["data_type"]  -%}
+    {%- if data_type == 'datetime' or data_type == 'date' %}
+    ,dim_Date_{{feld["column_name"]}}_bk = '-1'
+    {%- endif %}
+    {%- if data_type == 'datetime' %}
+    ,dim_Time_{{feld["column_name"]}}_bk = '-1'
+    {%- endif %}    
+    {%- endfor %}
+    -- Standard fields    
+    ,dwh_BatchRunIdInsert = @BatchRunIdInsert
+    ,dwh_DeleteFlag = 0        
+end
+;

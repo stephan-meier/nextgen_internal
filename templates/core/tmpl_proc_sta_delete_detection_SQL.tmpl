@@ -1,0 +1,42 @@
+{# bk suchen, das letzte Feld mit bk Flag wird genommen! #}
+{%- set ns = namespace(bk_name='') -%}
+{%- for feld in v_src_table.columns -%}
+{%- if feld["bk"] == 1 %} {%- set ns.bk_name = feld["column_name"] -%} {%- endif %}
+{%- endfor -%}
+
+if exists (select 1 
+from sysobjects where id = object_id('{{v_schema_name}}.usp_{{v_src_table.table_name}}_delete_detection')
+  and type = 'P')
+ drop procedure {{v_schema_name}}.usp_{{v_src_table.table_name}}_delete_detection
+;
+create procedure {{v_schema_name}}.usp_{{v_src_table.table_name}}_delete_detection
+  @BatchRunIdInsert int
+as
+begin
+  insert into {{v_schema_name}}.{{v_src_table.table_name}}
+  select
+    {%- for feld in v_src_table.columns %}
+    {{ "," if not loop.first else " " }}{{feld["column_name"]}}
+    {%- set data_type = feld["data_type"]  -%}
+    {%- if data_type == 'datetime' or data_type == 'date' %}
+    ,dim_Date_{{feld["column_name"]}}_bk
+    {%- endif %}
+    {%- if data_type == 'datetime' %}
+    ,dim_Time_{{feld["column_name"]}}_bk
+    {%- endif %}    
+    {%- endfor %}
+    -- Standard fields
+    ,dwh_BatchRunIdInsert = @BatchRunIdInsert
+    ,dwh_DeleteFlag = 1       
+  from {{v_src_schema_name}}.{{v_src_table.table_name}} dwh
+    where 1=1 
+	and {{v_src_schema_name}}.dwh_CurrentFlag = 1    
+    and {{v_src_schema_name}}.dwh_DeleteFlag = 0
+    and {{v_src_schema_name}}.dwh_EarlyArriveFlag = 0
+    and not exists (
+        select *
+        from {{v_schema_name}}.{{v_src_table.table_name}} stg
+        where {{v_schema_name}}.{{ns.bk_name}} = {{v_src_schema_name}}.{{ns.bk_name}}
+    )
+end
+;

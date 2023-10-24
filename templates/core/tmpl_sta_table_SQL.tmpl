@@ -1,0 +1,32 @@
+{%- set ns = namespace(has_pk=0) -%}
+if exists (select 1 
+    from sysobjects 
+    where id = object_id('{{v_schema_name}}.{{v_src_table.table_name}}')
+        and type = 'U')
+drop table {{v_schema_name}}.{{v_src_table.table_name}}
+;
+create table {{v_schema_name}}.{{v_src_table.table_name}} (
+    {%- for feld in v_src_table.columns %}
+    {%- if feld["pk"] == 1 %} {%- set ns.has_pk = 1 -%} {%- endif %}
+    {{ "," if not loop.first else " " }}{{feld["column_name"]}} {{feld["data_type"]}} {{feld["mandatory"]}}
+    {%- set data_type = feld["data_type"]  -%}
+    {%- if data_type == 'datetime' or data_type == 'date' %}
+    ,dim_Date_{{feld["column_name"]}}_bk nvarchar(10) {{feld["mandatory"]}}
+    {%- endif %}
+    {%- if data_type == 'datetime' %}
+    ,dim_Time_{{feld["column_name"]}}_bk nvarchar(8) {{feld["mandatory"]}}
+    {%- endif %}
+    {%- endfor -%}
+    {# Standard fields  #}
+    ,dwh_BatchRunIdInsert integer NOT NULL
+    ,dwh_DeleteFlag integer NOT NULL
+    {# constraints  #}
+    {%- if ns.has_pk == 1 %}
+    ,constraint {{v_src_table.pk_name}} primary key (
+    {%- for feld in v_src_table.columns -%}
+    {%- if feld["pk"] == 1 -%} 
+    {{ "," if not loop.first else " " }}{{feld["column_name"]}}
+    {%- endif -%}
+    {%- endfor -%})
+    {%- endif %}
+)

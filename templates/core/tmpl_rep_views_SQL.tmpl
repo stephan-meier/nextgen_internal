@@ -1,0 +1,108 @@
+if exists (select 1 
+from  sysobjects where id = object_id('{{v_schema_name}}.v_{{v_src_table.table_name}}_cur')
+ and type = 'V')
+ drop view {{v_schema_name}}.v_{{v_src_table.table_name}}_cur
+;
+
+create view {{v_schema_name}}.v_{{v_src_table.table_name}}_cur as
+select
+    {{v_src_table.table_name}}_sid
+
+    {%- for feld in v_src_table.columns %}
+    ,{{feld["column_name"]}} 
+    {%- set data_type = feld["data_type"]  -%}
+    {%- if data_type == 'datetime' or data_type == 'date' %}
+    ,dim_Date_{{feld["column_name"]}}_bk
+    {%- endif %}
+    {%- if data_type == 'datetime' %}
+    ,dim_Time_{{feld["column_name"]}}_bk
+    {%- endif %}    
+    {%- endfor %}
+    -- Standard fields    
+    ,dwh_ValidFrom
+    ,dwh_ValidTo
+    ,dwh_CurrentFlag
+    ,dwh_DeleteFlag
+    ,dwh_EarlyArriveFlag
+    ,dwh_EarlyArriveField
+    ,dwh_InsertDate
+    ,dwh_UpdateDate
+    ,dwh_BatchRunIdInsert
+    ,dwh_BatchRunIdUpdate    
+from dwh.{{v_src_table.table_name}}
+where 1=1
+    and dwh_CurrentFlag = 1
+    and dwh_DeleteFlag = 0
+    and dwh_EarlyArriveFlag = 0
+;
+
+if exists (select 1 
+from  sysobjects where id = object_id('{{v_schema_name}}.v_{{v_src_table.table_name}}_cid')
+ and type = 'V')
+ drop view {{v_schema_name}}.v_{{v_src_table.table_name}}_cid
+;
+
+create view {{v_schema_name}}.v_{{v_src_table.table_name}}_cid as
+select
+    {{v_src_table.table_name}}_sid
+
+    {%- for feld in v_src_table.columns %}
+    ,{{feld["column_name"]}} 
+    {%- set data_type = feld["data_type"]  -%}
+    {%- if data_type == 'datetime' or data_type == 'date' %}
+    ,dim_Date_{{feld["column_name"]}}_bk
+    {%- endif %}
+    {%- if data_type == 'datetime' %}
+    ,dim_Time_{{feld["column_name"]}}_bk
+    {%- endif %}    
+    {%- endfor %}
+    -- Standard fields    
+    ,dwh_ValidFrom
+    ,dwh_ValidTo
+    ,dwh_CurrentFlag
+    ,dwh_DeleteFlag
+    ,dwh_EarlyArriveFlag
+    ,dwh_EarlyArriveField
+    ,dwh_InsertDate
+    ,dwh_UpdateDate
+    ,dwh_BatchRunIdInsert
+    ,dwh_BatchRunIdUpdate    
+from {{v_src_schema_name}}.{{v_src_table.table_name}}
+where 1=1
+    and dwh_CurrentFlag = 1
+; 
+
+if exists (select 1 
+from  sysobjects where id = object_id('{{v_schema_name}}.v_{{v_src_table.table_name}}_fhi')
+ and type = 'V')
+ drop view {{v_schema_name}}.v_{{v_src_table.table_name}}_fhi
+;
+
+create view {{v_schema_name}}.v_{{v_src_table.table_name}}_fhi as
+select
+    {{v_src_table.table_name}}_sid
+
+    {%- for feld in v_src_table.columns %}
+    ,{{feld["column_name"]}} 
+    {%- set data_type = feld["data_type"]  -%}
+    {%- if data_type == 'datetime' or data_type == 'date' %}
+    ,dim_Date_{{feld["column_name"]}}_bk
+    {%- endif %}
+    {%- if data_type == 'datetime' %}
+    ,dim_Time_{{feld["column_name"]}}_bk
+    {%- endif %}    
+    {%- endfor %}
+    -- Standard fields    
+    ,dwh_ValidFrom
+    ,dwh_ValidTo
+    ,dwh_CurrentFlag
+    ,dwh_DeleteFlag
+    ,dwh_EarlyArriveFlag
+    ,dwh_EarlyArriveField
+    ,dwh_InsertDate
+    ,dwh_UpdateDate
+    ,dwh_BatchRunIdInsert
+    ,dwh_BatchRunIdUpdate    
+from {{v_src_schema_name}}.{{v_src_table.table_name}}
+where 1=1
+;     
